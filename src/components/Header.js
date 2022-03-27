@@ -6,7 +6,7 @@ function Header({ user, setAmountProductInCart, amountProductInCart, widthHandle
     console.log(widthHandler)
     return (
         <Navbar fixed="top" style={{ backgroundColor: "#288641" }}>
-            <Container>
+            <Container style={{backgroundColor: "none"}}>
                 <div className="text-white">
                     <Logo />
                 </div>
