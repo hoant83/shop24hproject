@@ -23,7 +23,7 @@ function HomepageContent({widthHandler}) {
     }
     const onViewAllClick = () => {
         // gọi api lấy thông tin tất cả products
-        getData("http://localhost:8000/products")
+        getData("https://shop24h-backend.herokuapp.com/products")
             .then((data) => {
                 console.log(data.products)
                 setProducts(data.products);
@@ -37,7 +37,7 @@ function HomepageContent({widthHandler}) {
     useEffect(() => {
         setHideAllViewAfterClick("block")
         // gọi api lấy thông tin tất cả products
-        getData("http://localhost:8000/products?limit=8&skip=0")
+        getData("https://shop24h-backend.herokuapp.com/products?limit=8&skip=0")
             .then((data) => {
                 console.log(data.products)
                 setProducts(data.products);
