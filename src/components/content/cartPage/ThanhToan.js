@@ -116,7 +116,7 @@ function ThanhToan({ arrayProductChecked, amountProductChecked, sumMoney, infoCu
                     'Content-type': 'application/json; charset=UTF-8',
                 }
             }
-            getData("http://localhost:8000/customers/" + infoCustomer._id, body)
+            getData("https://shop24h-backend.herokuapp.com/customers/" + infoCustomer._id, body)
                 .then((data) => {
                     setStatusModal("success");
                     setNoidungAlertValid("Cập nhật thành công!");
@@ -182,7 +182,7 @@ function ThanhToan({ arrayProductChecked, amountProductChecked, sumMoney, infoCu
                 'Content-type': 'application/json; charset=UTF-8',
             }
         }
-        getData("http://localhost:8000/customers/" + infoCustomer._id + "/orders", body)
+        getData("https://shop24h-backend.herokuapp.com/customers/" + infoCustomer._id + "/orders", body)
             .then((data) => {
                 console.log(data)
                 console.log(arrayProductChecked)
@@ -212,7 +212,7 @@ function ThanhToan({ arrayProductChecked, amountProductChecked, sumMoney, infoCu
                 'Content-type': 'application/json; charset=UTF-8',
             }
         }
-        getData("http://localhost:8000/orders/" + data.order._id + "/" + productChecked.productId + "/orderDetails", body)
+        getData("https://shop24h-backend.herokuapp.com/orders/" + data.order._id + "/" + productChecked.productId + "/orderDetails", body)
             .then((data) => {
                 console.log(data)
             })

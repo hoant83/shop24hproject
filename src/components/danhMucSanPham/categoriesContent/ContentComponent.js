@@ -56,7 +56,7 @@ function ContentComponent({widthHandler}) {
     }
     useEffect(() => {
         // gọi api lấy thông tin tất cả products
-        getData("http://localhost:8000/products?" + "name=" + fillterName + "&priceMin=" + priceMin + "&priceMax=" + priceMax + "&valueSelected=" + valueSelectTypeProduct)
+        getData("https://shop24h-backend.herokuapp.com/products?" + "name=" + fillterName + "&priceMin=" + priceMin + "&priceMax=" + priceMax + "&valueSelected=" + valueSelectTypeProduct)
             .then((data) => {
                 console.log(data.products)
                 //setProducts(data.products);

@@ -139,7 +139,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
         }
     }, [user])
     const findEmailAPI = (paramEmail, paramName) => {
-        getData("http://localhost:8000/customers/" + paramEmail)
+        getData("https://shop24h-backend.herokuapp.com/customers/" + paramEmail)
             .then((data) => {
                 setInfoCustomer(data.customer[0])
                 setFullNameModal(data.customer[0].fullName)
@@ -158,7 +158,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
             })
     }
     const getAllCartsOfThisCustomer = (paramCustomerId) => {
-        getData("http://localhost:8000/customers/" + paramCustomerId + "/carts")
+        getData("https://shop24h-backend.herokuapp.com/customers/" + paramCustomerId + "/carts")
             .then((data) => {
                 var cartsList = data.Carts.carts
                 console.log(cartsList.length)
@@ -179,7 +179,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
     }
     const callApiGetOrderById = () => {
         console.log(customerIdState)
-        getData("http://localhost:8000/orders/" + customerIdState + "/allOrders")
+        getData("https://shop24h-backend.herokuapp.com/orders/" + customerIdState + "/allOrders")
             .then((data) => {
                 console.log(data)
                 if(data.orders){
@@ -199,7 +199,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
     const sumMoneyBigOrder = (paramOrderId, arrayMoney, lengthOfOrders) => {
         console.log(paramOrderId)
         var moneyOfOrder = 0;
-        getData("http://localhost:8000/orders/" + paramOrderId + "/orderDetails")
+        getData("https://shop24h-backend.herokuapp.com/orders/" + paramOrderId + "/orderDetails")
             .then((data) => {
                 for(let i = 0; i< data.Order.orderDetails.length; i++){
                     moneyOfOrder = moneyOfOrder + ((data.Order.orderDetails[i].priceEach)*(data.Order.orderDetails[i].quantity))
@@ -218,7 +218,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
         console.log(paramOrderId)
         setOrderIdModal(paramOrderId)
         setOpenModalDetailOrder(true)
-        getData("http://localhost:8000/orders/" + paramOrderId + "/orderDetails")
+        getData("https://shop24h-backend.herokuapp.com/orders/" + paramOrderId + "/orderDetails")
             .then((data) => {
                 console.log(data)
                 setOrderDetailModal(data.Order.orderDetails)
@@ -234,7 +234,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
             })
     }
     const callApiGetInfoProducts = (paramProductId, arrayProduct, lengthOrderDetail) => {
-        getData("http://localhost:8000/products/" + paramProductId)
+        getData("https://shop24h-backend.herokuapp.com/products/" + paramProductId)
             .then((data) => {
                 arrayProduct.push(data.product)
                 if(arrayProduct.length == lengthOrderDetail){
@@ -364,7 +364,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
                     'Content-type': 'application/json; charset=UTF-8',
                 }
             }
-            getData("http://localhost:8000/customers/" + infoCustomer._id, body)
+            getData("https://shop24h-backend.herokuapp.com/customers/" + infoCustomer._id, body)
                 .then((data) => {
                     setStatusModal("success");
                     setNoidungAlertValid("Cập nhật thành công!");

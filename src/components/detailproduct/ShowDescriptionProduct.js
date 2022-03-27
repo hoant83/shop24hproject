@@ -13,7 +13,7 @@ function ShowDescriptionProduct({ id, widthHandler }) {
         return responseData;
     }
     useEffect(() => {
-        getData("http://localhost:8000/products/" + id)
+        getData("https://shop24h-backend.herokuapp.com/products/" + id)
             .then((data) => {
                 console.log(data.product)
                 setSubProduct(data.product)

@@ -98,7 +98,7 @@ function LoginPage({ user, setUser, widthHandler, heightHandler }) {
 
     }
     const findEmailAPI = (paramEmail, paramName) => {
-        getData("http://localhost:8000/customers/" + paramEmail)
+        getData("https://shop24h-backend.herokuapp.com/customers/" + paramEmail)
             .then((data) => {
                 if (data.customer) {
                     console.log(data.customer)
@@ -126,7 +126,7 @@ function LoginPage({ user, setUser, widthHandler, heightHandler }) {
                 'Content-type': 'application/json; charset=UTF-8',
             }
         }
-        getData("http://localhost:8000/customers", body)
+        getData("https://shop24h-backend.herokuapp.com/customers", body)
             .then((data) => {
                 console.log(data)
                 goToHomePage()
@@ -322,7 +322,7 @@ function LoginPage({ user, setUser, widthHandler, heightHandler }) {
     }
 
     const getAllCustomerAndCheck = () => {
-        getData("http://localhost:8000/customers/")
+        getData("https://shop24h-backend.herokuapp.com/customers/")
             .then((data) => {
                 console.log(data)
                 if(data.customer == undefined){

@@ -50,7 +50,7 @@ function CartContent({ user, setAmountProductInCart, setArrayProductChecked, set
     }, [user, varRefeshPage])
 
     const findEmailAPI = (paramEmail) => {
-        getData("http://localhost:8000/customers/" + paramEmail)
+        getData("https://shop24h-backend.herokuapp.com/customers/" + paramEmail)
             .then((data) => {
                 setInfoCustomer(data.customer[0])
                 let customerId = data.customer[0]._id
@@ -63,7 +63,7 @@ function CartContent({ user, setAmountProductInCart, setArrayProductChecked, set
             })
     }
     const getAllCartsOfThisCustomer = (paramCustomerId) => {
-        getData("http://localhost:8000/customers/" + paramCustomerId + "/carts")
+        getData("https://shop24h-backend.herokuapp.com/customers/" + paramCustomerId + "/carts")
             .then((data) => {
                 var cartsList = data.Carts.carts
                 console.log(cartsList)
@@ -78,7 +78,7 @@ function CartContent({ user, setAmountProductInCart, setArrayProductChecked, set
     const onBtnDeleteClick = (row) => {
         console.log(row)
         // gọi api delete order
-        const vURL_DELETE = 'http://localhost:8000/carts/' + customerIdState + "/" + row._id
+        const vURL_DELETE = 'https://shop24h-backend.herokuapp.com/carts/' + customerIdState + "/" + row._id
         fetch(vURL_DELETE, { method: 'DELETE' })
             .then(async response => {
                 const isJson = response.headers.get('content-type')?.includes('application/json');
@@ -116,7 +116,7 @@ function CartContent({ user, setAmountProductInCart, setArrayProductChecked, set
                     'Content-type': 'application/json; charset=UTF-8',
                 }
             }
-            getData("http://localhost:8000/carts/" + row._id, body)
+            getData("https://shop24h-backend.herokuapp.com/carts/" + row._id, body)
                 .then((data) => {
                     console.log(data)
                     setVarRefeshPage(varRefeshPage + 1)

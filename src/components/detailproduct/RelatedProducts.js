@@ -21,7 +21,7 @@ function RelatedProducts({ id, widthHandler }) {
     useEffect(() => {
         window.scrollTo(0, 0)
         const subRelatedProducts = []
-        getData("http://localhost:8000/products")
+        getData("https://shop24h-backend.herokuapp.com/products")
             .then((data) => {
                 for (let i = 0; i < data.products.length; i++) {
                     if (data.products[i]._id == id) {

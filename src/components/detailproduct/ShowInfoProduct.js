@@ -55,7 +55,7 @@ function ShowInfoProduct({ id, user, setAmountProductInCart, amountProductInCart
 
     }
     const findEmailAPI = (paramEmail) => {
-        getData("http://localhost:8000/customers/" + paramEmail)
+        getData("https://shop24h-backend.herokuapp.com/customers/" + paramEmail)
             .then((data) => {
                 var customerId = data.customer[0]._id
                 var cartsList = data.customer[0].carts
@@ -68,7 +68,7 @@ function ShowInfoProduct({ id, user, setAmountProductInCart, amountProductInCart
     }
 
     const getAllCartsOfThisCustomer = (paramCustomerId) => {
-        getData("http://localhost:8000/customers/" + paramCustomerId + "/carts")
+        getData("https://shop24h-backend.herokuapp.com/customers/" + paramCustomerId + "/carts")
             .then((data) => {
                 var cartsList = data.Carts.carts
                 var checkResult = false
@@ -101,7 +101,7 @@ function ShowInfoProduct({ id, user, setAmountProductInCart, amountProductInCart
                 'Content-type': 'application/json; charset=UTF-8',
             }
         }
-        getData("http://localhost:8000/carts/" + paramCart._id, body)
+        getData("https://shop24h-backend.herokuapp.com/carts/" + paramCart._id, body)
             .then((data) => {
                 console.log(data)
             })
@@ -124,7 +124,7 @@ function ShowInfoProduct({ id, user, setAmountProductInCart, amountProductInCart
                 'Content-type': 'application/json; charset=UTF-8',
             }
         }
-        getData("http://localhost:8000/customers/" + paramCustomerId + "/carts", body)
+        getData("https://shop24h-backend.herokuapp.com/customers/" + paramCustomerId + "/carts", body)
             .then((data) => {
                 console.log(data.Customer.carts.length)
                 getAllCartsOfCustomerToSetAmountOfCart(paramCustomerId)
@@ -134,7 +134,7 @@ function ShowInfoProduct({ id, user, setAmountProductInCart, amountProductInCart
             })
     }
     const getAllCartsOfCustomerToSetAmountOfCart = (paramCustomerId) => {
-        getData("http://localhost:8000/customers/" + paramCustomerId + "/carts")
+        getData("https://shop24h-backend.herokuapp.com/customers/" + paramCustomerId + "/carts")
             .then((data) => {
                 var cartsList = data.Carts.carts
                 setAmountProductInCart(cartsList.length)
@@ -145,7 +145,7 @@ function ShowInfoProduct({ id, user, setAmountProductInCart, amountProductInCart
     }
     useEffect(() => {
         // gọi api lấy thông tin tất cả products
-        getData("http://localhost:8000/products/" + id)
+        getData("https://shop24h-backend.herokuapp.com/products/" + id)
             .then((data) => {
                 console.log(data.product)
                 setSubProduct(data.product)
