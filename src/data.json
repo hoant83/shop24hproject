@@ -1,0 +1,185 @@
+
+[
+    {
+        "id": 1,
+        "name": "Cà chua đỏ",
+        "type": "Fruits",
+        "imageUrl": ["https://cdn.tgdd.vn/Files/2017/10/30/1037058/loi-ich-cua-ca-chua-doi-voi-suc-khoe-cach-an-ca-chua-an-toan-202102241108583945.jpg",
+                    "https://minhcaumart.vn/media/com_eshop/products/c%20chua%20sach%20an%20ton.jpg",
+                    "https://vinmec-prod.s3.amazonaws.com/images/20201216_034658_190222_ca-chua.max-1800x1800.jpg"
+                    ],
+        "buyPrice": 60000,
+        "promotionPrice": 49000,
+        "Description": "Dùng ép nước uống. Trái cây là thực phẩm cung cấp nhiều chất dinh dưỡng cho cơ thể, đồng thời giúp tăng sức đề kháng, nhất là vào những ngày nắng nóng."
+    },
+    {
+        "id": 2,
+        "name": "Hồng Dalat",
+        "type": "Fruits",
+        "imageUrl": ["https://trithucvn.org/wp-content/uploads/2019/10/qua-hong-1-2.jpg",
+                    "https://cdn.tgdd.vn/2020/10/CookProduct/Untitled-3-1200x676.jpg",
+                    "https://vnn-imgs-f.vgcloud.vn/2020/10/12/10/hong-trung-quoc2.jpg"
+                    ],
+        "buyPrice": 99000,
+        "promotionPrice": 88000,
+        "Description": "Có loại sấy và tươi. Trái cây là thực phẩm cung cấp nhiều chất dinh dưỡng cho cơ thể, đồng thời giúp tăng sức đề kháng, nhất là vào những ngày nắng nóng."
+    },
+    {
+        "id": 3,
+        "name": "Bơ KonTum",
+        "type": "Fruits",
+        "imageUrl": ["https://suckhoedoisong.qltns.mediacdn.vn/Images/nguyenkhanh/2019/05/10/qua_bo.jpg",
+                    "https://cdn.tgdd.vn/2020/08/CookProduct/Untitled-1-1200x676-20.jpg",
+                    "https://media.cooky.vn/images/blog-2016/cach-chon-bo-ngon-tuoi-khong-bi-dang-khi-mua-bo-sap-den-gan-1.jpg"
+                    ],
+        "buyPrice": 80000,
+        "promotionPrice": 69000,
+        "Description": "Dùng xay sinh tố rất ngon. Trái cây là thực phẩm cung cấp nhiều chất dinh dưỡng cho cơ thể, đồng thời giúp tăng sức đề kháng, nhất là vào những ngày nắng nóng."
+    },
+    {
+        "id": 4,
+        "name": "Kiwi",
+        "type": "Fruits",
+        "imageUrl": ["https://dinhduong.online/wp-content/uploads/2016/06/cachnauan.edu_.vn-cach-chon-kiwi.jpg",
+                    "https://photo-cms-baonghean.zadn.vn/w607/Uploaded/2022/nkdkswkqoc/201608/original/images1648807_kiwi1.jpg",
+                    "https://suckhoedoisong.qltns.mediacdn.vn/Images/thanhloan/2016/06/14/6-tac-dung-bat-ngo-cua-kiwi.jpg"
+                    ],
+        "buyPrice": 145000,
+        "promotionPrice": 132000,
+        "Description": "Có thể dùng làm nước ép. Trái cây là thực phẩm cung cấp nhiều chất dinh dưỡng cho cơ thể, đồng thời giúp tăng sức đề kháng, nhất là vào những ngày nắng nóng."
+    },
+    {
+        "id": 5,
+        "name": "Cam Đắc Lắc",
+        "type": "Fruits",
+        "imageUrl": ["https://www.viettropfruit.com/wp-content/uploads/2016/09/cam-vang-uc-ngon.jpg",
+                    "https://hoaquafuji.com/storage/app/media/mot-qua-cam-bao-nhieu-calo-0-5.jpg",
+                    "https://media.vov.vn/uploaded/69lwz2nmezg/2019_08_07/1_uezv.jpg"
+                    ],
+        "buyPrice": 77000,
+        "promotionPrice": 66000,
+        "Description": "Có thể dùng làm nước ép, vắt. Trái cây là thực phẩm cung cấp nhiều chất dinh dưỡng cho cơ thể, đồng thời giúp tăng sức đề kháng, nhất là vào những ngày nắng nóng."
+    },
+    {
+        "id": 6,
+        "name": "Khớm",
+        "type": "Fruits",
+        "imageUrl": ["https://cdn-www.vinid.net/53bbcf9a-cong-dung-cua-qua-dua-thom.jpg",
+                    "https://exson.com.vn/wp-content/uploads/2019/04/Ba%CC%A3n-%C4%91a%CC%83-bie%CC%82%CC%81t-ca%CC%81ch-%C4%91ie%CC%82%CC%80u-tri%CC%A3-so%CC%89i-tha%CC%A3%CC%82n-ba%CC%86%CC%80ng-qua%CC%89-du%CC%9B%CC%81a-hay-chu%CC%9Ba-1200x800.jpg",
+                    "https://leafsie.vn/wp-content/uploads/2020/08/dua-MD2.jpg"
+                    ],
+        "buyPrice": 111000,
+        "promotionPrice": 99000,
+        "Description": "Có thể dùng làm nước ép. Trái cây là thực phẩm cung cấp nhiều chất dinh dưỡng cho cơ thể, đồng thời giúp tăng sức đề kháng, nhất là vào những ngày nắng nóng."
+    },
+    {
+        "id": 7,
+        "name": "Nước ép khớm",
+        "type": "Juice",
+        "imageUrl": ["https://media.vov.vn/uploaded/69lwz2nmezg/2019_07_07/2_neet.jpg",
+                    "https://cdn.huongnghiepaau.com/wp-content/uploads/2017/08/nuoc-ep-dua.jpg",
+                    "https://cdn.tgdd.vn/2020/06/CookRecipe/Avatar/nuoc-ep-dua-hat-chia-thumbnail.jpg"
+                    ],
+        "buyPrice": 77000,
+        "promotionPrice": 59000,
+        "Description": "Uống ngon hơn khi dùng với đá. Nước ép trái cây là thức uống cung cấp nhiều chất dinh dưỡng cho cơ thể, đồng thời giúp tăng sức đề kháng, nhất là vào những ngày nắng nóng."
+    },
+    {
+        "id": 8,
+        "name": "Cherry",
+        "type": "Fruits",
+        "imageUrl": ["https://traicayvuongtron.vn/resources/uploads/danh_muc_lien_quan/traicaychung/trai-cay-tuoicherry_21.jpg",
+                    "https://media.cooky.vn/images/blog-2016/cach-chon-mua-cherry-va-nhung-cong-dung-tuyet-voi-cua-loai-trai-cay-dat-do-nay%201.jpg",
+                    "https://cdn.tgdd.vn/Files/2020/08/14/1279868/trong-qua-cherry-co-1-bo-phan-cuc-doc-khi-an-phai-can-than-luoc-bo-neu-khong-co-the-gay-ngo-doc-202008141325555023.jpg"
+                    ],
+        "buyPrice": 167000,
+        "promotionPrice": 152000,
+        "Description": "Có thể dùng làm nước ép. Trái cây là thực phẩm cung cấp nhiều chất dinh dưỡng cho cơ thể, đồng thời giúp tăng sức đề kháng, nhất là vào những ngày nắng nóng."
+    },
+    {
+        "id": 9,
+        "name": "Dâu Dalat",
+        "type": "Fruits",
+        "imageUrl": ["https://tieudung.vn/upload_images/images/2021/03/16/dau-tay.jpg",
+                    "https://cdn.tgdd.vn/Products/Images/8788/223378/bhx/dau-tay-hop-500g-202103180809491848.jpg",
+                    "https://cdn.tgdd.vn/2021/05/CookProduct/0-1200x676-8.jpg"
+                    ],
+        "buyPrice": 282000,
+        "promotionPrice": 256000,
+        "Description": "Có thể dùng làm nước ép. Trái cây là thực phẩm cung cấp nhiều chất dinh dưỡng cho cơ thể, đồng thời giúp tăng sức đề kháng, nhất là vào những ngày nắng nóng."
+    },
+    {
+        "id": 10,
+        "name": "Nước ép kiwi",
+        "type": "Juice",
+        "imageUrl": ["https://toplist.vn/images/800px/nuoc-ep-kiwi-725656.jpg",
+                    "https://cdn.dayphache.edu.vn/wp-content/uploads/2019/12/nuoc-ep-kiwi.jpg",
+                    "https://adiva.com.vn/wp-content/uploads/2019/08/nuoc-ep-kiwi.gif"
+                    ],
+        "buyPrice": 222000,
+        "promotionPrice": 202000,
+        "Description": "Ngon hơn khi dùng với đá. Nước ép trái cây là thức uống giải khát cung cấp nhiều chất dinh dưỡng cho cơ thể, đồng thời giúp tăng sức đề kháng, nhất là vào những ngày nắng nóng."
+    },
+    {
+        "id": 11,
+        "name": "Nước ép sắc màu",
+        "type": "Juice",
+        "imageUrl": ["https://thaythuocvietnam.vn/wp-content/uploads/2018/04/nuoc-ep-hoa-qua.jpg",
+                    "https://www.pos365.vn/storage/app/media/uploads/2019/08/nuopc-ep-trai-cay-3.png",
+                    "https://hoaquafuji.com/storage/app/media/NEWS/12-nuoc-ep-cho-tre.jpg"
+                    ],
+        "buyPrice": 284000,
+        "promotionPrice": 262000,
+        "Description": "Ngon hơn khi dùng với đá. Nước ép trái cây là thức uống giải khát cung cấp nhiều chất dinh dưỡng cho cơ thể, đồng thời giúp tăng sức đề kháng, nhất là vào những ngày nắng nóng."
+    },
+    {
+        "id": 12,
+        "name": "Nước ép cam",
+        "type": "Juice",
+        "imageUrl": ["https://topmonan.edu.vn/wp-content/uploads/2021/07/Cach-lam-nuoc-cam-ep-ngon-va-thom-ket-hop-voi-le-va-gung-5.jpg",
+                    "https://toplist.vn/images/800px/thuong-hieu-nuoc-cam-ep-duoc-yeu-thich-nhat-hien-nay-254689.jpg",
+                    "https://cafebiz.cafebizcdn.vn/thumb_w/600/162123310254002176/2020/10/8/photo1602128281986-1602128282131976805629.jpg"
+                    ],
+        "buyPrice": 134000,
+        "promotionPrice": 124000,
+        "Description": "Ngon hơn khi dùng với đá. Nước ép trái cây là thức uống giải khát cung cấp nhiều chất dinh dưỡng cho cơ thể, đồng thời giúp tăng sức đề kháng, nhất là vào những ngày nắng nóng."
+    },
+    {
+        "id": 13,
+        "name": "Nước ép Hàn Quốc",
+        "type": "Juice",
+        "imageUrl": ["https://cdn.tgdd.vn/Files/2021/05/26/1354961/6-thuong-hieu-nuoc-trai-cay-han-quoc-thom-ngon-hap-dan-202105262101043898.jpg",
+                    "https://product.hstatic.net/1000372317/product/l7_4f280e603c22453aa094888ace74e7f6.jpg",
+                    "https://product.hstatic.net/200000044962/product/1_0bb1dff3c2da4cc385e1c544e9489593_master.jpg"
+                    ],
+        "buyPrice": 310000,
+        "promotionPrice": 301000,
+        "Description": "Ngon hơn khi dùng với đá. Nước ép trái cây là thức uống giải khát cung cấp nhiều chất dinh dưỡng cho cơ thể, đồng thời giúp tăng sức đề kháng, nhất là vào những ngày nắng nóng."
+    },
+    {
+        "id": 14,
+        "name": "Nước ép dừa",
+        "type": "Juice",
+        "imageUrl": ["https://maycatthit.vn/wp-content/uploads/2018/07/coconut-milk.jpg",
+                    "https://baogialai.com.vn/dataimages/201706/original/images2544254_nuoc_dua_2_USPV.jpg",
+                    "https://mayviendong.vn/wp-content/uploads/2018/05/may-ep-nuoc-cot-dua.jpg"
+                    ],
+        "buyPrice": 450000,
+        "promotionPrice": 402000,
+        "Description": "Ngon hơn khi dùng với đá"
+    },
+    {
+        "id": 15,
+        "name": "Nước ép xoài",
+        "type": "Juice",
+        "imageUrl": ["https://vietpat.vn/wp-content/uploads/2016/01/nuoc-ep-xoai.jpg",
+                    "https://cdn.huongnghiepaau.com/wp-content/uploads/2020/09/uong-nuoc-ep-xoai-co-tac-dung-gi.jpg",
+                    "https://cdn.dayphache.edu.vn/wp-content/uploads/2021/10/cach-lam-nuoc-ep-xoai.jpg"
+                    ],
+        "buyPrice": 315000,
+        "promotionPrice": 299000,
+        "Description": "Ngon hơn khi dùng với đá. Nước ép trái cây là thức uống giải khát cung cấp nhiều chất dinh dưỡng cho cơ thể, đồng thời giúp tăng sức đề kháng, nhất là vào những ngày nắng nóng."
+    }
+
+    
+]
