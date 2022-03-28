@@ -44,7 +44,7 @@ function RelatedProducts({ id, widthHandler }) {
     return (
         <>
         {
-            widthHandler > 500 ?
+            widthHandler > 800 ?
             <Container style={{ marginBottom: 40 }}>
                 <h2 className='mb-3 mt-5'>Related Products </h2>
                 <CardGroup>

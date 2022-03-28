@@ -396,7 +396,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
                 <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
             {
-                widthHandler > 500 ? 
+                widthHandler > 800 ? 
                 <Navbar.Text style={{ fontSize: 20 }}>
                     {(user == undefined || user == null) ? <div><FontAwesomeIcon type="button" onClick={goToLoginPage} className="text-warning ms-2" icon={faCircleUser} /> <small type="button" onClick={goToLoginPage} className="ms-2 mr-2 text-white">Đăng nhập</small>
                         <FontAwesomeIcon className="text-warning ms-2 mr-2" icon={faBell} />
@@ -498,7 +498,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
                 aria-describedby="modal-modal-confirm"
                 style={{borderRadius: 10}}
             >
-                <Box sx={widthHandler > 500 ? style2 : styleMobile} style={{ backgroundColor: "white" }}>
+                <Box sx={widthHandler > 800 ? style2 : styleMobile} style={{ backgroundColor: "white" }}>
                     <Typography mb={2} id="modal-modal-title" variant="h5" component="h2">
                         <strong>Đơn hàng đã mua!</strong><br></br>
                     </Typography>
@@ -574,7 +574,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
                 aria-describedby="modal-modal-confirm"
                 style={{borderRadius: 10}}
             >
-                <Box sx={widthHandler > 500 ? style2 : styleMobile} style={{ backgroundColor: "white" }}>
+                <Box sx={widthHandler > 800 ? style2 : styleMobile} style={{ backgroundColor: "white" }}>
                     <Typography mb={2} id="modal-modal-title" variant="h5" component="h2">
                         <strong>Chi tiết mã đơn hàng {orderIdModal}</strong><br></br>
                     </Typography>
@@ -636,7 +636,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
                 aria-labelledby="modal-modal-info"
                 aria-describedby="modal-modal-info"
             >
-                <Box sx={widthHandler > 500 ? style2 : styleMobile} style={{ backgroundColor: "white" }}>
+                <Box sx={widthHandler > 800 ? style2 : styleMobile} style={{ backgroundColor: "white" }}>
                     <Typography mb={2} id="modal-modal-info" variant="h5" component="h2">
                         <strong>Thông tin tài khoản</strong>
                     </Typography>

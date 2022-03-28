@@ -26,7 +26,7 @@ function FillterComponent({ changeFillterNameInputHandler, changeFillterPriceMin
     }
     return (
         <>
-        {widthHandler > 500 ?
+        {widthHandler > 800 ?
         <Row>
         <Col sm="12">
             <Label>

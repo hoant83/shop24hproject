@@ -7,7 +7,7 @@ function Footer ({widthHandler}){
     return(
         <>
         {
-            widthHandler > 500 ?
+            widthHandler > 800 ?
             <Container fluid className="bg-light">
             <Container>
                 <Row>

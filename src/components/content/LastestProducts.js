@@ -14,7 +14,7 @@ function LastestProducts({ products, widthHandler }) {
     }
     return (
         <>
-        {widthHandler > 500 ? 
+        {widthHandler > 800 ? 
             <Container>
                 <h2 className='text-center mb-3 mt-3'>Sản phẩm mới nhất <FontAwesomeIcon style={{ color: "green" }} icon={faLeaf} /></h2>
                 <CardGroup>

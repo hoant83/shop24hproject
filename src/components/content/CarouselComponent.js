@@ -8,7 +8,7 @@ import anh4 from "../../assets/images/anh4.jpg"
 function CarouselComponent ({widthHandler}){
         return (
             <>{
-                widthHandler > 500 ?
+                widthHandler > 800 ?
             
                 <Carousel>
                         <Carousel.Item className='text-dark'>  

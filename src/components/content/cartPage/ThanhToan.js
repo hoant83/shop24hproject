@@ -259,7 +259,7 @@ function ThanhToan({ arrayProductChecked, amountProductChecked, sumMoney, infoCu
                 style={{ outline: 'none' }}
             >
                 <div style={{ outline: 'none' }}>
-                    <Box sx={widthHandler > 500 ? style2 : styleMobile} style={{ backgroundColor: "white" }}>
+                    <Box sx={widthHandler > 800 ? style2 : styleMobile} style={{ backgroundColor: "white" }}>
                         <Row>
                             <p>Bạn vẫn chưa chọn sản phẩm nào để mua.</p>
                         </Row>
@@ -282,7 +282,7 @@ function ThanhToan({ arrayProductChecked, amountProductChecked, sumMoney, infoCu
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-confirm"
             >
-                <Box sx={widthHandler > 500 ? style2 : styleMobile} style={{ backgroundColor: "white" }}>
+                <Box sx={widthHandler > 800 ? style2 : styleMobile} style={{ backgroundColor: "white" }}>
                     <Typography mb={2} id="modal-modal-title" variant="h5" component="h2">
                         <i>Địa chỉ mới!</i><br></br>
                         <small style={{ fontSize: 15 }}>Để đặt hàng, vui lòng thêm địa chỉ nhận hàng</small>
@@ -399,7 +399,7 @@ function ThanhToan({ arrayProductChecked, amountProductChecked, sumMoney, infoCu
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-confirm"
             >
-                <Box sx={widthHandler > 500 ? style2 : styleMobile} style={{ backgroundColor: "white" }}>
+                <Box sx={widthHandler > 800 ? style2 : styleMobile} style={{ backgroundColor: "white" }}>
                     <Typography mb={2} id="modal-modal-title" variant="h5" component="h2">
                         <i>Kiểm tra lại đơn hàng!</i><br></br>
                     </Typography>
@@ -465,7 +465,7 @@ function ThanhToan({ arrayProductChecked, amountProductChecked, sumMoney, infoCu
                 style={{ outline: 'none' }}
             >
                 <div style={{ outline: 'none' }}>
-                    <Box sx={widthHandler > 500 ? style2 : styleMobile} style={{ backgroundColor: "white" }}>
+                    <Box sx={widthHandler > 800 ? style2 : styleMobile} style={{ backgroundColor: "white" }}>
                         <Row>
                             <p>Tạo đơn hàng thành công.</p>
                             <p>Mã đơn hàng của bạn là: <strong>{orderId}</strong></p>

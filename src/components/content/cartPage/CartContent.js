@@ -146,7 +146,7 @@ function CartContent({ user, setAmountProductInCart, setArrayProductChecked, set
     }
     return (
         <>{
-            widthHandler > 500 ? 
+            widthHandler > 800 ? 
             <Container>
                 <Grid container>
                     <Grid item xs={12} md={12} lg={12}>

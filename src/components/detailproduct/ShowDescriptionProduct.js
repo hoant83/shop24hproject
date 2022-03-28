@@ -25,7 +25,7 @@ function ShowDescriptionProduct({ id, widthHandler }) {
     return (
         <>
         {
-            widthHandler > 500 ?
+            widthHandler > 800 ?
             <Container >
                 <Col sm="12">
                     <Row>

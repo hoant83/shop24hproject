@@ -69,7 +69,7 @@ function ContentComponent({widthHandler}) {
     }, [page, runOnFilter]);
     return (
         <>
-        {widthHandler > 500 ?
+        {widthHandler > 800 ?
         <Container>
             <Row>
                 <Col sm="12">

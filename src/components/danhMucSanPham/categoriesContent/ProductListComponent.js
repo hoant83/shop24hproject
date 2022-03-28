@@ -13,7 +13,7 @@ function ProductsListComponent({ productNew, widthHandler }) {
     return (
         <>
         {
-            widthHandler > 500 ? 
+            widthHandler > 800 ? 
             <Container>
             <CardGroup>
                 {productNew.map((product, index, productNew) => (
