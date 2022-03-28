@@ -450,7 +450,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
                 </Navbar.Text>
                 : 
                 <Navbar.Text style={{ fontSize: 18 }}>
-                    {(user == undefined || user == null) ? <div><FontAwesomeIcon style={{backgroundColor: "none"}} onClick={goToLoginPage} className="text-warning ms-2" icon={faCircleUser} /> <small type="button" onClick={goToLoginPage} className="ms-2 mr-2 text-white">Đăng nhập</small>
+                    {(user == undefined || user == null) ? <div><FontAwesomeIcon style={{backgroundColor: "none"}} onClick={goToLoginPage} className="text-warning ms-2" icon={faCircleUser} /> <small onClick={goToLoginPage} className="ms-2 mr-2 text-white">Đăng nhập</small>
         
                         <FontAwesomeIcon className="text-danger ms-2" icon={faCartShopping} onClick={goToLoginPage} />
                     </div>
