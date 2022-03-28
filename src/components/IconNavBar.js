@@ -447,9 +447,9 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
                 </Navbar.Text>
                 : 
                 <Navbar.Text style={{ fontSize: 20 }}>
-                    {(user == undefined || user == null) ? <div style={{fontSize: 13}}><FontAwesomeIcon style={{backgroundColor: "none"}} type="button" onClick={goToLoginPage} className="text-warning ms-2" icon={faCircleUser} /> <small type="button" onClick={goToLoginPage} className="ms-2 mr-2 text-white">Đăng nhập</small>
+                    {(user == undefined || user == null) ? <div style={{fontSize: 13}}><FontAwesomeIcon style={{backgroundColor: "none"}} onClick={goToLoginPage} className="text-warning ms-2" icon={faCircleUser} /> <small type="button" onClick={goToLoginPage} className="ms-2 mr-2 text-white">Đăng nhập</small>
         
-                        <FontAwesomeIcon className="text-danger ms-2" icon={faCartShopping} type="button" onClick={goToLoginPage} />
+                        <FontAwesomeIcon className="text-danger ms-2" icon={faCartShopping} onClick={goToLoginPage} />
                     </div>
 
                         : <div style={{display: "inline", fontSize: 13}}>
@@ -477,7 +477,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
                                 <MenuItem style={{fontSize: 14}} onClick={onLogOutClick}>Đăng xuất</MenuItem>
                             </Menu>
                             <FontAwesomeIcon className="text-warning ms-2 mr-2" icon={faBell} />
-                            <FontAwesomeIcon style={{ color: "#FFFFFF" }} className="ms-2" icon={faCartShopping} type="button" onClick={onCartClick} />
+                            <FontAwesomeIcon style={{ color: "#FFFFFF" }} className="ms-2" icon={faCartShopping} onClick={onCartClick} />
                             <span className='badge badge-warning' id='lblCartCount'> {amountProductInCart} </span>
                         </div>
                     }
