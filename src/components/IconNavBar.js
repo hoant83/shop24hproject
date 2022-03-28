@@ -510,7 +510,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
                                 <Table sx={{ minWidth: 650 }} aria-label="cart table">
                                     <TableHead >
                                         <TableRow>
-                                            <TableCell   align="center">STT</TableCell>
+                                            <TableCell  align="center">STT</TableCell>
                                             <TableCell  align="center">Mã đơn hàng</TableCell>
                                             <TableCell  align="center">Số sản phẩm</TableCell>
                                             <TableCell  align="center">Trạng thái</TableCell>
@@ -549,8 +549,6 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
                                     </TableBody>
                                 </Table>
                             </TableContainer>
-                            
-                            
                         </Grid>
                     </Grid>
                     <Row className="mt-2">
