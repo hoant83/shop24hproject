@@ -201,8 +201,11 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
         var moneyOfOrder = 0;
         getData("https://shop24h-backend.herokuapp.com/orders/" + paramOrderId + "/orderDetails")
             .then((data) => {
+                console.log(data)
                 for(let i = 0; i< data.Order.orderDetails.length; i++){
-                    moneyOfOrder = moneyOfOrder + ((data.Order.orderDetails[i].priceEach)*(data.Order.orderDetails[i].quantity))
+                    console.log(data.Order.orderDetails[i].priceEach)
+                    console.log(data.Order.orderDetails[i].quantity)
+                    moneyOfOrder = moneyOfOrder + (parseInt(data.Order.orderDetails[i].priceEach)*parseInt(data.Order.orderDetails[i].quantity))
                 }
                 arrayMoney.push(moneyOfOrder)
                 console.log(arrayMoney)

@@ -198,12 +198,14 @@ function ThanhToan({ arrayProductChecked, amountProductChecked, sumMoney, infoCu
     }
     const postAllOrderDetail = (data) => {
         for (let i = 0; i < arrayProductChecked.length; i++) {
+            console.log(arrayProductChecked)
             getApiPostDetailOrder(arrayProductChecked[i], data)
         }
     }
     const getApiPostDetailOrder = (productChecked, data) => {
         var infoOrderDetail = {
-            quantity: productChecked.amount
+            quantity: productChecked.amount,
+            priceEach: productChecked.price
         }
         const body = {
             method: 'POST',
