@@ -7,10 +7,7 @@ function Header({ user, setAmountProductInCart, amountProductInCart, widthHandle
     return (
         <Navbar fixed="top" style={{ backgroundColor: "#288641" }}>
             <Container style={{backgroundColor: "none"}}>
-                <div className="text-white">
-                    <Logo />
-                </div>
-
+                <Logo widthHandler={widthHandler}/>
                 <IconNavBar widthHandler={widthHandler} setAmountProductInCart={setAmountProductInCart} amountProductInCart={amountProductInCart} user={user} />
             </Container>
         </Navbar>
