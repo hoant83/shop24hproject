@@ -79,7 +79,7 @@ function RelatedProducts({ id, widthHandler }) {
                     <Row>
                     {subProduct ? subProduct.map((product, index, products) => (
                         <Col xs="6" key={product._id} onClick={() => { onAProductClick(product._id, product.name) }}>
-                            <Card className='mb-2' type="button" title='Click vào để xem chi tiết'>
+                            <Card className='mb-2' title='Click vào để xem chi tiết'>
                                 <CardImg
                                     alt={product.name}
                                     src={product.imageUrl[0]}
@@ -88,11 +88,12 @@ function RelatedProducts({ id, widthHandler }) {
                                     height="150"
                                 />
                                 <CardBody>
-                                    <CardTitle tag="strong" style={{fontSize: 12}}>
-                                        <b>{product.name}</b>
+                                    <CardTitle tag="h6">
+                                        {product.name}
                                     </CardTitle>
                                     <CardText>
-                                        <del>{(product.buyPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} VND</del> <strong className="text-success">{(product.promotionPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} VND</strong><br></br>
+                                        <del>{(product.buyPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}đ</del><br></br>
+                                        <strong className="text-success">{(product.promotionPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}đ</strong><br></br>
                                     </CardText>
                                 </CardBody>
                             </Card>

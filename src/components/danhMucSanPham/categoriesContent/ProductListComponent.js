@@ -46,7 +46,7 @@ function ProductsListComponent({ productNew, widthHandler }) {
                     <Row>
                 {productNew.map((product, index, productNew) => (
                     <Col xs="12" key={product._id} onClick={() => { onAProductClick(product._id, product.name) }}>
-                        <Card className='mb-2' type="button" title='Click vào để xem chi tiết'>
+                        <Card className='mb-2'>
                             <CardImg
                                 alt={product.name}
                                 src={product.imageUrl[0]}
@@ -59,7 +59,8 @@ function ProductsListComponent({ productNew, widthHandler }) {
                                     {product.name}
                                 </CardTitle>
                                 <CardText>
-                                    <del>{(product.buyPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} VND</del> <strong className="text-success">{(product.promotionPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} VND</strong>
+                                    <del>{(product.buyPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}đ</del> <br></br> 
+                                    <strong className="text-success">{(product.promotionPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}đ</strong>
                                 </CardText>
                             </CardBody>
                         </Card>
