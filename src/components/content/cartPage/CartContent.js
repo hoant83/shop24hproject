@@ -216,9 +216,9 @@ function CartContent({ user, setAmountProductInCart, setArrayProductChecked, set
                                     {allCartList ? allCartList.map((row, index) => (
                                         <StyledTableRow key={index}   xs={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                                             <StyledTableCell1 align="center">
-                                                <input style={{ height: 10, width: 10 }} type="checkbox" id={row.productId} checked={row.isChecked} onChange={(event) => { onCheckBoxClick(row, event, index) }} />
+                                                <input type="checkbox" id={row.productId} checked={row.isChecked} onChange={(event) => { onCheckBoxClick(row, event, index) }} />
                                             </StyledTableCell1>
-                                            <StyledTableCell1 align="center"><img src={row.imgUrl} style={{ height: 30, width: 30 }}></img></StyledTableCell1>
+                                            <StyledTableCell1 align="center"><img src={row.imgUrl} style={{ maxHeight: 40, maxWidth: 40 }}></img></StyledTableCell1>
                                             <StyledTableCell1 align="center">{row.name}</StyledTableCell1>
                                             <StyledTableCell1 align="center">{(row.price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}đ</StyledTableCell1>
                                             <StyledTableCell1 align="center" >
