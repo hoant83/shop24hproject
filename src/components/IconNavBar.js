@@ -446,7 +446,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
 
                 </Navbar.Text>
                 : 
-                <Navbar.Text style={{ fontSize: 20 }}>
+                <Navbar.Text style={{ fontSize: 18 }}>
                     {(user == undefined || user == null) ? <div><FontAwesomeIcon style={{backgroundColor: "none"}} onClick={goToLoginPage} className="text-warning ms-2" icon={faCircleUser} /> <small type="button" onClick={goToLoginPage} className="ms-2 mr-2 text-white">Đăng nhập</small>
         
                         <FontAwesomeIcon className="text-danger ms-2" icon={faCartShopping} onClick={goToLoginPage} />
@@ -459,7 +459,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
                                 className="mb-1"
                                 aria-expanded={open ? 'true' : undefined}
                                 onClick={handleClick}
-                                src={user.photoURL} style={{ width: 25, height: 25, borderRadius: 40 }}
+                                src={user.photoURL} style={{ width: 20, height: 20, borderRadius: 40 }}
                             >
                             </img>
                             <Menu

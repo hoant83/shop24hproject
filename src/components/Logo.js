@@ -19,7 +19,6 @@ function Logo({widthHandler}) {
             <div>
                 <Navbar.Brand onClick={onLogoClick}><img src="https://www.pngkey.com/png/full/307-3073999_fruit-ninja-fruit-ninja-logo.png" style={{width: 120, height: 48}}></img></Navbar.Brand>
             </div> 
-            
         }
         </>
         
