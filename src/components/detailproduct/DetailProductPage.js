@@ -14,7 +14,7 @@ function DetailProductPage({ user, setAmountProductInCart, amountProductInCart, 
 
     return (
         <>
-            <Header setAmountProductInCart={setAmountProductInCart} amountProductInCart={amountProductInCart} user={user} />
+            <Header widthHandler={widthHandler} setAmountProductInCart={setAmountProductInCart} amountProductInCart={amountProductInCart} user={user} />
             <br></br>
             <br></br>
             <br></br>

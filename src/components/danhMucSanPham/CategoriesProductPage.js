@@ -7,7 +7,7 @@ function CategoriesProductPage ({user, setAmountProductInCart, amountProductInCa
     return (
         <>
             <Container>
-                <Header setAmountProductInCart={setAmountProductInCart} amountProductInCart={amountProductInCart} user={user}/>
+                <Header widthHandler={widthHandler} setAmountProductInCart={setAmountProductInCart} amountProductInCart={amountProductInCart} user={user}/>
                 <br></br>
                 <br></br>
                 <br></br>

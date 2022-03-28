@@ -20,7 +20,7 @@ function CartPage ({user, setAmountProductInCart, amountProductInCart, widthHand
     }, [arrayProductChecked])
     return (
         <>
-            <Header setAmountProductInCart={setAmountProductInCart} amountProductInCart={amountProductInCart} user={user}/>
+            <Header widthHandler={widthHandler} setAmountProductInCart={setAmountProductInCart} amountProductInCart={amountProductInCart} user={user}/>
             <br></br>
             <br></br>
             <br></br>
