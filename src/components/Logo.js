@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 function Logo({widthHandler}) {
     const navigate = useNavigate();
     const onLogoClick = () => {
-        console.log("Logo được click!")
+        
         navigate("/")
     }
     return (

@@ -8,8 +8,7 @@ import ShowDescriptionProduct from "./ShowDescriptionProduct"
 import RelatedProducts from "./RelatedProducts"
 function DetailProductPage({ user, setAmountProductInCart, amountProductInCart, widthHandler }) {
     const { id, name } = useParams();
-    console.log(id)
-    console.log(widthHandler)
+
     const navigate = useNavigate();
 
     return (
@@ -25,7 +24,7 @@ function DetailProductPage({ user, setAmountProductInCart, amountProductInCart, 
             <ShowDescriptionProduct widthHandler={widthHandler} id={id} />
             <br></br>
             <RelatedProducts widthHandler={widthHandler} id={id} />
-            <Footer widthHandler={widthHandler}/>
+            <Footer widthHandler={widthHandler} />
         </>
     )
 }

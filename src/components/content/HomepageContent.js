@@ -6,13 +6,13 @@ import LastestProducts from "./LastestProducts"
 import ViewAll from "./ViewAll"
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-function HomepageContent({widthHandler}) {
+function HomepageContent({ widthHandler }) {
     const [products, setProducts] = useState([]);
     const [hideAllViewAfterClick, setHideAllViewAfterClick] = useState("block")
     const navigate = useNavigate();
 
     const goToCategoriesProductPage = () => {
-        console.log("nút chuyển trang đến danh mục sản phẩm được click")
+
         navigate("/categoriesproductpage");
     }
     // hàm gọi api
@@ -25,7 +25,7 @@ function HomepageContent({widthHandler}) {
         // gọi api lấy thông tin tất cả products
         getData("https://shop24h-backend.herokuapp.com/products")
             .then((data) => {
-                console.log(data.products)
+
                 setProducts(data.products);
                 setHideAllViewAfterClick("none")
             })
@@ -39,7 +39,7 @@ function HomepageContent({widthHandler}) {
         // gọi api lấy thông tin tất cả products
         getData("https://shop24h-backend.herokuapp.com/products?limit=8&skip=0")
             .then((data) => {
-                console.log(data.products)
+
                 setProducts(data.products);
             })
             .catch((error) => {
@@ -53,7 +53,7 @@ function HomepageContent({widthHandler}) {
                     <Button onClick={goToCategoriesProductPage} className='btn bg-success text-white' >Đến trang sản phẩm</Button>
                 </Container>
             </Navbar>
-            <CarouselComponent goToCategoriesProductPage={goToCategoriesProductPage} widthHandler={widthHandler}/>
+            <CarouselComponent goToCategoriesProductPage={goToCategoriesProductPage} widthHandler={widthHandler} />
             <LastestProducts widthHandler={widthHandler} products={products} />
             <div style={{ display: hideAllViewAfterClick }} className="text-center mt-5 mb-5">
                 <ViewAll onViewAllClick={onViewAllClick} />

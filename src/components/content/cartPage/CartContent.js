@@ -39,6 +39,8 @@ function CartContent({ user, setAmountProductInCart, setArrayProductChecked, set
     const [disabledCheckbox, setDisabledCheckbox] = useState(false);
     const [idCartClick, setIdCartClick] = useState("");
     const [idCartClickCheckBox, setIdCartClickCheckBox] = useState("");
+    const [disabledDeleteButton, setDisabledDeleteButton] = useState(false);
+    const [idDisabledDeleteButton, setIdDisabledDeleteButton] = useState("");
     // hàm gọi api
     const getData = async (paramUrl, paramOptions = {}) => {
         const response = await fetch(paramUrl, paramOptions);
@@ -57,7 +59,7 @@ function CartContent({ user, setAmountProductInCart, setArrayProductChecked, set
             .then((data) => {
                 setInfoCustomer(data.customer[0])
                 let customerId = data.customer[0]._id
-                console.log(customerId)
+
                 setCustomerIdState(customerId)
                 getAllCartsOfThisCustomer(customerId)
             })
@@ -69,7 +71,7 @@ function CartContent({ user, setAmountProductInCart, setArrayProductChecked, set
         getData("https://shop24h-backend.herokuapp.com/customers/" + paramCustomerId + "/carts")
             .then((data) => {
                 var cartsList = data.Carts.carts
-                console.log(cartsList)
+
                 setAmountProductInCart(cartsList.length)
                 setAllCartList(cartsList)
                 cacutatorPriceAndAmount(cartsList)
@@ -79,7 +81,9 @@ function CartContent({ user, setAmountProductInCart, setArrayProductChecked, set
             })
     }
     const onBtnDeleteClick = (row) => {
-        console.log(row)
+
+        setIdDisabledDeleteButton(row._id)
+        setDisabledDeleteButton(true)
         // gọi api delete order
         const vURL_DELETE = 'https://shop24h-backend.herokuapp.com/carts/' + customerIdState + "/" + row._id
         fetch(vURL_DELETE, { method: 'DELETE' })
@@ -93,6 +97,7 @@ function CartContent({ user, setAmountProductInCart, setArrayProductChecked, set
                     return Promise.reject(error);
                 }
                 setVarRefeshPage(varRefeshPage + 1)
+
             })
             .catch(error => {
                 console.log(error)
@@ -106,13 +111,13 @@ function CartContent({ user, setAmountProductInCart, setArrayProductChecked, set
     }
     const onBtnTruClick = (row) => {
         setIdCartClick(row._id)
-        console.log(row)
-        if(row.amount > 1) {
+
+        if (row.amount > 1) {
             setDisabledAmount(true);
             const number = -1
             getApiUpdateCart(row, number, row.isChecked)
         }
-        
+
     }
     const getApiUpdateCart = (row, number, check) => {
         var dataCart = {
@@ -129,7 +134,7 @@ function CartContent({ user, setAmountProductInCart, setArrayProductChecked, set
             }
             getData("https://shop24h-backend.herokuapp.com/carts/" + row._id, body)
                 .then((data) => {
-                    console.log(data)
+                    
                     setVarRefeshPage(varRefeshPage + 1);
                     // setDisabledCheckbox(false)
                     // setTimeout(() => setDisabledAmount(false), 1600);
@@ -139,7 +144,7 @@ function CartContent({ user, setAmountProductInCart, setArrayProductChecked, set
                         setIdCartClick("")
                         setIdCartClickCheckBox("")
                     }, 1600);
-                    
+
                 })
                 .catch((error) => {
                     console.log(error)
@@ -151,9 +156,7 @@ function CartContent({ user, setAmountProductInCart, setArrayProductChecked, set
     }
     const onCheckBoxClick = (row, event, position) => {
         setIdCartClickCheckBox(row._id)
-        console.log(event.target.checked)
-        console.log(row)
-        console.log(position)
+
         setDisabledCheckbox(true)
         getApiUpdateCart(row, 0, !row.isChecked)
     }
@@ -165,114 +168,114 @@ function CartContent({ user, setAmountProductInCart, setArrayProductChecked, set
                 subProductChecked.push(cartsList[i])
             }
         }
-        console.log(subProductChecked)
+
         setArrayProductChecked(subProductChecked)
     }
     return (
         <>{
-            widthHandler > 800 ? 
-            <Container>
-                <Grid container>
-                    <Grid item xs={12} md={12} lg={12}>
-                        <TableContainer component={Paper}>
-                            <Table sx={{ minWidth: 650 }} aria-label="cart table">
-                                <TableHead>
-                                    <TableRow style={{ backgroundColor: "#ffeb3b" }}>
-                                        <TableCell align="center">Chọn</TableCell>
-                                        <TableCell align="center">Sản phẩm</TableCell>
-                                        <TableCell align="center">Tên</TableCell>
-                                        <TableCell align="center">Đơn giá</TableCell>
-                                        <TableCell align="center">Số lượng</TableCell>
-                                        <TableCell align="center">Số tiền</TableCell>
-                                        <TableCell align="center">Thao tác</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {allCartList ? allCartList.map((row, index) => (
-                                        <StyledTableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                                            <StyledTableCell align="center">
-                                                <input style={{ height: 20, width: 20 }} disabled={idCartClickCheckBox == row._id ? disabledCheckbox : false} type="checkbox" id={row.productId} checked={row.isChecked} onChange={(event) => { onCheckBoxClick(row, event, index) }} />
-                                            </StyledTableCell>
-                                            <StyledTableCell align="center"><img src={row.imgUrl} style={{ height: 60, width: 60 }}></img></StyledTableCell>
-                                            <StyledTableCell align="center">{row.name}</StyledTableCell>
-                                            <StyledTableCell align="center">{(row.price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}đ</StyledTableCell>
-                                            <StyledTableCell align="center">
-                                                <Button disabled={idCartClick == row._id ? disabledAmount : false} onClick={() => { onBtnTruClick(row) }}>-</Button>
-                                                {row.amount}
-                                                <Button disabled={idCartClick == row._id ? disabledAmount : false} onClick={() => { onBtnCongClick(row) }}>+</Button>
-                                            </StyledTableCell>
-
-                                            <StyledTableCell align="center">{(row.price * row.amount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}đ</StyledTableCell>
-
-                                            <StyledTableCell align="center">
-                                                <Button value={index} onClick={() => { onBtnDeleteClick(row) }} style={{ borderRadius: 25, backgroundColor: "#288641", padding: "10px 20px", fontSize: "10px" }} variant="contained">Xóa</Button>
-                                            </StyledTableCell>
-                                        </StyledTableRow >
-                                    ))
-                                        :
-                                        null
-                                    }
-
-                                </TableBody>
-                            </Table>
-                        </TableContainer>
-                    </Grid>
-                </Grid>
-            </Container>
-            :
-            <Container>
-                <Grid container>
-                    <Grid item xs={12}>
-                        <TableContainer component={Paper}>
-                            <Table xs={{ minWidth: 10 }} aria-label="cart table">
-                                <TableHead>
-                                    <TableRow style={{ backgroundColor: "#ffeb3b" }}> 
-                                        <TableCell  align="center">Chọn</TableCell>
-                                        <TableCell  align="center">Sản phẩm</TableCell>
-                                        <TableCell  align="center">Tên</TableCell>
-                                        <TableCell  align="center">Đơn giá</TableCell>
-                                        <TableCell  align="center">Số lượng</TableCell>
-                                        <TableCell  align="center">Số tiền</TableCell>
-                                        <TableCell  align="center">Thao tác</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {allCartList ? allCartList.map((row, index) => (
-                                        <StyledTableRow key={index}   xs={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                                            <StyledTableCell1 align="center">
-                                                <input type="checkbox" id={row.productId} disabled={idCartClickCheckBox == row._id ? disabledCheckbox : false} checked={row.isChecked} onChange={(event) => { onCheckBoxClick(row, event, index) }} />
-                                            </StyledTableCell1>
-                                            <StyledTableCell1 align="center"><img src={row.imgUrl} style={{ maxHeight: 40, maxWidth: 40 }}></img></StyledTableCell1>
-                                            <StyledTableCell1 align="center">{row.name}</StyledTableCell1>
-                                            <StyledTableCell1 align="center">{(row.price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}đ</StyledTableCell1>
-                                            <StyledTableCell1 align="center" >
-                                                <div style={{display: "inline-flex"}}>
+            widthHandler > 800 ?
+                <Container>
+                    <Grid container>
+                        <Grid item xs={12} md={12} lg={12}>
+                            <TableContainer component={Paper}>
+                                <Table sx={{ minWidth: 650 }} aria-label="cart table">
+                                    <TableHead>
+                                        <TableRow style={{ backgroundColor: "#ffeb3b" }}>
+                                            <TableCell align="center">Chọn</TableCell>
+                                            <TableCell align="center">Sản phẩm</TableCell>
+                                            <TableCell align="center">Tên</TableCell>
+                                            <TableCell align="center">Đơn giá</TableCell>
+                                            <TableCell align="center">Số lượng</TableCell>
+                                            <TableCell align="center">Số tiền</TableCell>
+                                            <TableCell align="center">Thao tác</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {allCartList ? allCartList.map((row, index) => (
+                                            <StyledTableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                                                <StyledTableCell align="center">
+                                                    <input style={{ height: 20, width: 20 }} disabled={idCartClickCheckBox == row._id ? disabledCheckbox : false} type="checkbox" id={row.productId} checked={row.isChecked} onChange={(event) => { onCheckBoxClick(row, event, index) }} />
+                                                </StyledTableCell>
+                                                <StyledTableCell align="center"><img src={row.imgUrl} style={{ height: 60, width: 60 }}></img></StyledTableCell>
+                                                <StyledTableCell align="center">{row.name}</StyledTableCell>
+                                                <StyledTableCell align="center">{(row.price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}đ</StyledTableCell>
+                                                <StyledTableCell align="center">
                                                     <Button disabled={idCartClick == row._id ? disabledAmount : false} onClick={() => { onBtnTruClick(row) }}>-</Button>
-                                                    <span className="mt-2">{row.amount}</span>
+                                                    {row.amount}
                                                     <Button disabled={idCartClick == row._id ? disabledAmount : false} onClick={() => { onBtnCongClick(row) }}>+</Button>
-                                                </div>
-                                                
-                                            </StyledTableCell1>
+                                                </StyledTableCell>
 
-                                            <StyledTableCell1 align="center">{(row.price * row.amount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}đ</StyledTableCell1>
+                                                <StyledTableCell align="center">{(row.price * row.amount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}đ</StyledTableCell>
 
-                                            <StyledTableCell1 align="center">
-                                                <Button value={index} onClick={() => { onBtnDeleteClick(row) }} style={{backgroundColor: "#288641", padding: "5px 5px", fontSize: "7px" }} variant="contained">Xóa</Button>
-                                            </StyledTableCell1>
-                                        </StyledTableRow >
-                                    ))
-                                        :
-                                        null
-                                    }
+                                                <StyledTableCell align="center">
+                                                    <Button disabled={idDisabledDeleteButton == row._id ? disabledDeleteButton : false} value={index} onClick={() => { onBtnDeleteClick(row) }} style={{ borderRadius: 25, backgroundColor: "#288641", padding: "10px 20px", fontSize: "10px" }} variant="contained">Xóa</Button>
+                                                </StyledTableCell>
+                                            </StyledTableRow >
+                                        ))
+                                            :
+                                            null
+                                        }
 
-                                </TableBody>
-                            </Table>
-                        </TableContainer>
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </Container>
+                </Container>
+                :
+                <Container>
+                    <Grid container>
+                        <Grid item xs={12}>
+                            <TableContainer component={Paper}>
+                                <Table xs={{ minWidth: 10 }} aria-label="cart table">
+                                    <TableHead>
+                                        <TableRow style={{ backgroundColor: "#ffeb3b" }}>
+                                            <TableCell align="center">Chọn</TableCell>
+                                            <TableCell align="center">Sản phẩm</TableCell>
+                                            <TableCell align="center">Tên</TableCell>
+                                            <TableCell align="center">Đơn giá</TableCell>
+                                            <TableCell align="center">Số lượng</TableCell>
+                                            <TableCell align="center">Số tiền</TableCell>
+                                            <TableCell align="center">Thao tác</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {allCartList ? allCartList.map((row, index) => (
+                                            <StyledTableRow key={index} xs={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                                                <StyledTableCell1 align="center">
+                                                    <input type="checkbox" id={row.productId} disabled={idCartClickCheckBox == row._id ? disabledCheckbox : false} checked={row.isChecked} onChange={(event) => { onCheckBoxClick(row, event, index) }} />
+                                                </StyledTableCell1>
+                                                <StyledTableCell1 align="center"><img src={row.imgUrl} style={{ maxHeight: 40, maxWidth: 40 }}></img></StyledTableCell1>
+                                                <StyledTableCell1 align="center">{row.name}</StyledTableCell1>
+                                                <StyledTableCell1 align="center">{(row.price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}đ</StyledTableCell1>
+                                                <StyledTableCell1 align="center" >
+                                                    <div style={{ display: "inline-flex" }}>
+                                                        <Button disabled={idCartClick == row._id ? disabledAmount : false} onClick={() => { onBtnTruClick(row) }}>-</Button>
+                                                        <span className="mt-2">{row.amount}</span>
+                                                        <Button disabled={idCartClick == row._id ? disabledAmount : false} onClick={() => { onBtnCongClick(row) }}>+</Button>
+                                                    </div>
+
+                                                </StyledTableCell1>
+
+                                                <StyledTableCell1 align="center">{(row.price * row.amount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}đ</StyledTableCell1>
+
+                                                <StyledTableCell1 align="center">
+                                                    <Button disabled={idDisabledDeleteButton == row._id ? disabledDeleteButton : false} value={index} onClick={() => { onBtnDeleteClick(row) }} style={{ backgroundColor: "#288641", padding: "5px 5px", fontSize: "7px" }} variant="contained">Xóa</Button>
+                                                </StyledTableCell1>
+                                            </StyledTableRow >
+                                        ))
+                                            :
+                                            null
+                                        }
+
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+                        </Grid>
+                    </Grid>
+                </Container>
         }
-            
+
         </>
     )
 }

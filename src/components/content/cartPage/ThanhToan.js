@@ -62,6 +62,8 @@ function ThanhToan({ arrayProductChecked, amountProductChecked, sumMoney, infoCu
     const [openModalConfirmOrder, setOpenModalConfirmOrder] = useState(false);
     const [openModalCreateOrderSuccess, setOpenModalCreateOrderSuccess] = useState(false);
 
+    const [disabledXacNhanDonHang, setDisabledXacNhanDonHang] = useState(false);
+    const [disabledHoanThanhButton, setDisabledHoanThanhButton] = useState(false);
     const [orderId, setOrderId] = useState("");
 
     const [fullNameModal, setFullNameModal] = useState("");
@@ -100,6 +102,7 @@ function ThanhToan({ arrayProductChecked, amountProductChecked, sumMoney, infoCu
         setCountryModal(event.target.value);
     }
     const onHoanThanhClick = () => {
+        setDisabledHoanThanhButton(true)
         var vCheck = validInfoCustomer()
         if (vCheck) {
             var vDataInfoCustomer = {
@@ -123,7 +126,7 @@ function ThanhToan({ arrayProductChecked, amountProductChecked, sumMoney, infoCu
                     setOpenAlert(true);
                     onBtnCancelClick();
                     setOpenModalConfirmOrder(true);
-
+                    setDisabledHoanThanhButton(false);
                 })
                 .catch((error) => {
                     setStatusModal("error");
@@ -172,6 +175,7 @@ function ThanhToan({ arrayProductChecked, amountProductChecked, sumMoney, infoCu
         return true;
     }
     const onBtnXacNhanDatHangClick = () => {
+        setDisabledXacNhanDonHang(true);
         var infoCreateOrder = {
             note: "Đơn hàng có " + amountProductChecked + " sản phẩm."
         }
@@ -184,13 +188,12 @@ function ThanhToan({ arrayProductChecked, amountProductChecked, sumMoney, infoCu
         }
         getData("https://shop24h-backend.herokuapp.com/customers/" + infoCustomer._id + "/orders", body)
             .then((data) => {
-                console.log(data)
-                console.log(arrayProductChecked)
+
                 postAllOrderDetail(data)
                 setOrderId(data.order._id)
                 onBtnCancelClick()
-                setOpenModalCreateOrderSuccess(true)
-                
+                setDisabledXacNhanDonHang(false);
+                setOpenModalCreateOrderSuccess(true);
             })
             .catch((error) => {
                 console.log(error)
@@ -198,7 +201,7 @@ function ThanhToan({ arrayProductChecked, amountProductChecked, sumMoney, infoCu
     }
     const postAllOrderDetail = (data) => {
         for (let i = 0; i < arrayProductChecked.length; i++) {
-            console.log(arrayProductChecked)
+
             getApiPostDetailOrder(arrayProductChecked[i], data)
         }
     }
@@ -216,7 +219,7 @@ function ThanhToan({ arrayProductChecked, amountProductChecked, sumMoney, infoCu
         }
         getData("https://shop24h-backend.herokuapp.com/orders/" + data.order._id + "/" + productChecked.productId + "/orderDetails", body)
             .then((data) => {
-                console.log(data)
+
             })
             .catch((error) => {
                 console.log(error)
@@ -383,11 +386,12 @@ function ThanhToan({ arrayProductChecked, amountProductChecked, sumMoney, infoCu
                     <Row className="mt-4 text-center">
                         <Col xs="12" sm="12">
                             <Row className="mt-4 mb-4">
-                                <Col xs="7" sm="6">
-                                    <Button onClick={onHoanThanhClick} className="bg-success w-75 text-white">Hoàn thành</Button>
-                                </Col>
+
                                 <Col xs="5" sm="6">
                                     <Button onClick={onBtnCancelClick} className="bg-secondary w-75 text-white">Hủy Bỏ</Button>
+                                </Col>
+                                <Col xs="7" sm="6">
+                                    <Button disabled={disabledHoanThanhButton} onClick={onHoanThanhClick} style={{ backgroundColor: "#288641", padding: "5px 5px", width: "75%" }} variant="contained">Hoàn thành</Button>
                                 </Col>
                             </Row>
                         </Col>
@@ -449,10 +453,10 @@ function ThanhToan({ arrayProductChecked, amountProductChecked, sumMoney, infoCu
                         <Col xs="12" sm="12">
                             <Row className="mt-2">
                                 <Col xs="6" sm="6">
-                                    <Button onClick={onBtnCancelClick} style={{ backgroundColor: "#ee4d2d" }} className="w-100 text-white">Hủy Bỏ</Button>
+                                    <Button onClick={onBtnCancelClick} style={{ backgroundColor: "#ee4d2d" }} className="bg-secondary w-75 text-white">Hủy Bỏ</Button>
                                 </Col>
                                 <Col xs="6" sm="6">
-                                    <Button onClick={onBtnXacNhanDatHangClick} style={{ backgroundColor: "#ee4d2d" }} className="w-100 text-white">Xác nhận</Button>
+                                    <Button disabled={disabledXacNhanDonHang} onClick={onBtnXacNhanDatHangClick} style={{ backgroundColor: "#288641", padding: "5px 5px", width: "75%" }} variant="contained">Xác nhận</Button>
                                 </Col>
                             </Row>
                         </Col>
@@ -484,7 +488,7 @@ function ThanhToan({ arrayProductChecked, amountProductChecked, sumMoney, infoCu
                     </Box>
                 </div>
             </Modal>
-            <Snackbar style={{zIndex: 1500}} open={openAlert} autoHideDuration={3000} onClose={handleCloseAlert} anchorOrigin={{ vertical, horizontal }}>
+            <Snackbar style={{ zIndex: 1500 }} open={openAlert} autoHideDuration={3000} onClose={handleCloseAlert} anchorOrigin={{ vertical, horizontal }}>
                 <Alert onClose={handleCloseAlert} severity={statusModal} sx={{ width: '100%' }}>
                     {noidungAlertValid}
                 </Alert>

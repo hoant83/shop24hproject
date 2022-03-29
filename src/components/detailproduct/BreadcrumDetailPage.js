@@ -8,42 +8,42 @@ import { useNavigate } from "react-router-dom";
 
 function handleClick(event) {
   event.preventDefault();
-  console.info('You clicked a breadcrumb.');
+
 }
 
-export default function BreadcrumDetailPage({name}) {
+export default function BreadcrumDetailPage({ name }) {
   const navigate = useNavigate();
   const onHomeClick = () => {
-    console.log("Home Breadcrumb được click!")
+
     navigate("/")
   }
   const onAllProductClick = () => {
-    console.log("All product Breadcrumb được click!")
+
     navigate("/categoriesproductpage")
   }
   return (
     <Container>
-        <div role="presentation" onClick={handleClick}>
+      <div role="presentation" onClick={handleClick}>
         <Breadcrumbs aria-label="breadcrumb">
-            <Link
+          <Link
             underline="hover"
             color="inherit"
             onClick={onHomeClick}
             type="button"
-            >
+          >
             Home
-            </Link>
-            <Link
+          </Link>
+          <Link
             underline="hover"
             color="inherit"
             onClick={onAllProductClick}
             type="button"
-            >
+          >
             All product
-            </Link>
-            <Typography color="text.primary">{name}</Typography>
+          </Link>
+          <Typography color="text.primary">{name}</Typography>
         </Breadcrumbs>
-        </div>
+      </div>
     </Container>
   );
 }

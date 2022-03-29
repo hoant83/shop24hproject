@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { auth, googleProvider } from '../firebase';
 import CartPage from "./content/cartPage/CartPage"
 import { Col, Row } from "reactstrap";
-const dtfUS = new Intl.DateTimeFormat('uk', { day: '2-digit', month: '2-digit', year: 'numeric'});
+const dtfUS = new Intl.DateTimeFormat('uk', { day: '2-digit', month: '2-digit', year: 'numeric' });
 
 var validFullname = false;
 var validPhoneNumber = false;
@@ -17,7 +17,7 @@ var validCountry = false;
 function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHandler }) {
     const vertical = "top"
     const horizontal = "right"
-    console.log(widthHandler)
+    
     const style2 = {
         position: 'absolute',
         top: '50%',
@@ -147,9 +147,9 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
                 setAddressModal(data.customer[0].address)
                 setCityModal(data.customer[0].city)
                 setCountryModal(data.customer[0].country)
-                console.log(data.customer[0])
+
                 let customerId = data.customer[0]._id
-                console.log(customerId)
+
                 setCustomerIdState(customerId)
                 getAllCartsOfThisCustomer(customerId)
             })
@@ -161,7 +161,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
         getData("https://shop24h-backend.herokuapp.com/customers/" + paramCustomerId + "/carts")
             .then((data) => {
                 var cartsList = data.Carts.carts
-                console.log(cartsList.length)
+
                 setAmountProductInCart(cartsList.length)
             })
             .catch((error) => {
@@ -178,38 +178,37 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
         callApiGetOrderById()
     }
     const callApiGetOrderById = () => {
-        console.log(customerIdState)
+        
         getData("https://shop24h-backend.herokuapp.com/orders/" + customerIdState + "/allOrders")
             .then((data) => {
-                console.log(data)
-                if(data.orders){
+
+                if (data.orders) {
                     var arrayMoney = [];
-                    for(let i = 0; i < data.orders.length; i++){
+                    for (let i = 0; i < data.orders.length; i++) {
                         sumMoneyBigOrder(data.orders[i]._id, arrayMoney, data.orders.length)
                     }
                     setArrayProductBought(data.orders)
-                    console.log(data.orders)
+
                 }
-                
+
             })
             .catch((error) => {
                 console.log(error)
             })
     }
     const sumMoneyBigOrder = (paramOrderId, arrayMoney, lengthOfOrders) => {
-        console.log(paramOrderId)
+
         var moneyOfOrder = 0;
         getData("https://shop24h-backend.herokuapp.com/orders/" + paramOrderId + "/orderDetails")
             .then((data) => {
-                console.log(data)
-                for(let i = 0; i< data.Order.orderDetails.length; i++){
-                    console.log(data.Order.orderDetails[i].priceEach)
-                    console.log(data.Order.orderDetails[i].quantity)
-                    moneyOfOrder = moneyOfOrder + (parseInt(data.Order.orderDetails[i].priceEach)*parseInt(data.Order.orderDetails[i].quantity))
+
+                for (let i = 0; i < data.Order.orderDetails.length; i++) {
+
+                    moneyOfOrder = moneyOfOrder + (parseInt(data.Order.orderDetails[i].priceEach) * parseInt(data.Order.orderDetails[i].quantity))
                 }
                 arrayMoney.push(moneyOfOrder)
-                console.log(arrayMoney)
-                if(arrayMoney.length===lengthOfOrders){
+
+                if (arrayMoney.length === lengthOfOrders) {
                     setSumMoney(arrayMoney)
                 }
             })
@@ -218,17 +217,17 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
             })
     }
     const onDetailClick = (paramOrderId) => {
-        console.log(paramOrderId)
+
         setOrderIdModal(paramOrderId)
         setOpenModalDetailOrder(true)
         getData("https://shop24h-backend.herokuapp.com/orders/" + paramOrderId + "/orderDetails")
             .then((data) => {
-                console.log(data)
+                
                 setOrderDetailModal(data.Order.orderDetails)
                 var orderDetail = data.Order.orderDetails
-                console.log(orderDetail)
+
                 var arrayProduct = [];
-                for(let i = 0; i< orderDetail.length; i++){
+                for (let i = 0; i < orderDetail.length; i++) {
                     callApiGetInfoProducts(orderDetail[i].product, arrayProduct, orderDetail.length)
                 }
             })
@@ -240,8 +239,8 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
         getData("https://shop24h-backend.herokuapp.com/products/" + paramProductId)
             .then((data) => {
                 arrayProduct.push(data.product)
-                if(arrayProduct.length == lengthOrderDetail){
-                    console.log(arrayProduct)
+                if (arrayProduct.length == lengthOrderDetail) {
+
                     setArrayProductState(arrayProduct)
                 }
             })
@@ -251,12 +250,12 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
     }
     const onFullnameChange = (event) => {
         setFullNameModal(event.target.value);
-        if(event.target.value.length > 2 || fullNameModal.length > 2){
+        if (event.target.value.length > 2 || fullNameModal.length > 2) {
             setColorFullname("#288641");
             setCharFullname("✓");
             validFullname = true;
         }
-        else{
+        else {
             setColorFullname("red");
             setCharFullname("x");
             validFullname = false;
@@ -267,12 +266,12 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
         const filterPhone2 = /(([02]))+([0-9]{9})\b/
         setPhoneNumberModal(event.target.value);
         var checkPhone = (filterPhone.test(event.target.value) || filterPhone2.test(event.target.value))
-        if(checkPhone){
+        if (checkPhone) {
             setColorPhoneNumber("#288641");
             setCharPhoneNumber("✓");
             validPhoneNumber = true;
         }
-        else{
+        else {
             setColorPhoneNumber("red");
             setCharPhoneNumber("x");
             validPhoneNumber = false;
@@ -280,12 +279,12 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
     }
     const onAddressChange = (event) => {
         setAddressModal(event.target.value);
-        if(event.target.value != ""){
+        if (event.target.value != "") {
             setColorAddress("#288641");
             setCharAddress("✓");
             validAddress = true;
         }
-        else{
+        else {
             setColorAddress("red");
             setCharAddress("x");
             validAddress = false;
@@ -293,12 +292,12 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
     }
     const onCityChange = (event) => {
         setCityModal(event.target.value);
-        if(event.target.value != ""){
+        if (event.target.value != "") {
             setColorCity("#288641");
             setCharCity("✓");
             validCity = true;
         }
-        else{
+        else {
             setColorCity("red");
             setCharCity("x");
             validCity = false;
@@ -306,12 +305,12 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
     }
     const onCountryChange = (event) => {
         setCountryModal(event.target.value);
-        if(event.target.value != ""){
+        if (event.target.value != "") {
             setColorCountry("#288641");
             setCharCountry("✓");
             validCountry = true;
         }
-        else{
+        else {
             setColorCountry("red");
             setCharCountry("x");
             validCountry = false;
@@ -320,7 +319,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
     const onInfoAccountClick = () => {
         handleClose();
         setOpenModalInfoCustomer(true)
-        if(fullNameModal.length > 2){
+        if (fullNameModal.length > 2) {
             setColorFullname("#288641");
             setCharFullname("✓");
             validFullname = true;
@@ -328,29 +327,29 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
         const filterPhone = /([\+84|84|0]+(3|5|7|8|9|1[2|6|8|9]))+([0-9]{8})\b/
         const filterPhone2 = /(([02]))+([0-9]{9})\b/
         var checkPhone = (filterPhone.test(phoneNumberModal) || filterPhone2.test(phoneNumberModal))
-        if(checkPhone){
+        if (checkPhone) {
             setColorPhoneNumber("#288641");
             setCharPhoneNumber("✓");
             validPhoneNumber = true;
         }
-        if(addressModal != ""){
+        if (addressModal != "") {
             setColorAddress("#288641");
             setCharAddress("✓");
             validAddress = true;
         }
-        if(cityModal != ""){
+        if (cityModal != "") {
             setColorCity("#288641");
             setCharCity("✓");
             validCity = true;
         }
-        if(countryModal != ""){
+        if (countryModal != "") {
             setColorCountry("#288641");
             setCharCountry("✓");
             validCountry = true;
         }
     }
     const onUpdateModalInFoCustomerClick = () => {
-        console.log(infoCustomer._id)
+        
         var vCheck = validInfoCustomer()
         if (vCheck) {
             var vDataInfoCustomer = {
@@ -373,7 +372,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
                     setNoidungAlertValid("Cập nhật thành công!");
                     setOpenAlert(true);
                     onBtnCloseModalInFoCusTomerClick();
-                    
+
 
                 })
                 .catch((error) => {
@@ -381,145 +380,145 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
                     setNoidungAlertValid("Lỗi mạng, xin thử lại!");
                     setOpenAlert(true);
                     console.log(error)
-                    
+
                 })
         }
     }
     const validInfoCustomer = () => {
-        if(validFullname == false || validPhoneNumber == false || validAddress == false || validCity == false || validCountry == false){
+        if (validFullname == false || validPhoneNumber == false || validAddress == false || validCity == false || validCountry == false) {
             return false;
         }
-        else{
+        else {
             return true;
         }
     }
     return (
         <>
-            
-                <Navbar.Toggle />
+
+            <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
-            {
-                widthHandler > 800 ? 
-                <Navbar.Text style={{ fontSize: 20 }}>
-                    {(user == undefined || user == null) ? <div><FontAwesomeIcon type="button" onClick={goToLoginPage} className="text-warning ms-2" icon={faCircleUser} /> <small type="button" onClick={goToLoginPage} className="ms-2 mr-2 text-white">Đăng nhập</small>
-                        <FontAwesomeIcon className="text-warning ms-2 mr-2" icon={faBell} />
-                        <FontAwesomeIcon className="text-danger ms-2" icon={faCartShopping} type="button" onClick={goToLoginPage} />
-                    </div>
+                {
+                    widthHandler > 800 ?
+                        <Navbar.Text style={{ fontSize: 20 }}>
+                            {(user == undefined || user == null) ? <div><FontAwesomeIcon type="button" onClick={goToLoginPage} className="text-warning ms-2" icon={faCircleUser} /> <small type="button" onClick={goToLoginPage} className="ms-2 mr-2 text-white">Đăng nhập</small>
+                                <FontAwesomeIcon className="text-warning ms-2 mr-2" icon={faBell} />
+                                <FontAwesomeIcon className="text-danger ms-2" icon={faCartShopping} type="button" onClick={goToLoginPage} />
+                            </div>
 
-                        : <div>
-                            <img
-                                id="user"
-                                aria-controls={open ? 'user-menu' : undefined}
+                                : <div>
+                                    <img
+                                        id="user"
+                                        aria-controls={open ? 'user-menu' : undefined}
 
-                                aria-expanded={open ? 'true' : undefined}
-                                onClick={handleClick}
-                                src={user.photoURL} style={{ width: 30, height: 30, borderRadius: 30 }}
-                            >
-                            </img>
-                            <small
-                                id="user"
-                                aria-controls={open ? 'user-menu' : undefined}
-                                aria-expanded={open ? 'true' : undefined}
-                                onClick={handleClick}
-                                type="button" className="ms-2 mr-2"
-                                style={{ color: "#FFFFFF" }}
-                            >
-                                {user.displayName}
-                            </small>
+                                        aria-expanded={open ? 'true' : undefined}
+                                        onClick={handleClick}
+                                        src={user.photoURL} style={{ width: 30, height: 30, borderRadius: 30 }}
+                                    >
+                                    </img>
+                                    <small
+                                        id="user"
+                                        aria-controls={open ? 'user-menu' : undefined}
+                                        aria-expanded={open ? 'true' : undefined}
+                                        onClick={handleClick}
+                                        type="button" className="ms-2 mr-2"
+                                        style={{ color: "#FFFFFF" }}
+                                    >
+                                        {user.displayName}
+                                    </small>
 
-                            <Menu
-                                id="user-menu"
-                                anchorEl={anchorEl}
-                                open={open}
-                                onClose={handleClose}
-                                MenuListProps={{
-                                    'aria-labelledby': 'user',
-                                }}
-                                
-                            >
-                                <MenuItem style={{fontSize: 14}} onClick={onInfoAccountClick}>Thông tin tài khoản</MenuItem>
-                                <MenuItem style={{fontSize: 14}} onClick={onOrderBoughtClick}>Đơn hàng đã mua</MenuItem>
-                                <MenuItem style={{fontSize: 14}} onClick={onLogOutClick}>Đăng xuất</MenuItem>
-                            </Menu>
-                            <FontAwesomeIcon className="text-warning ms-2 mr-2" icon={faBell} />
-                            <FontAwesomeIcon style={{ color: "#FFFFFF" }} className="ms-2" icon={faCartShopping} type="button" onClick={onCartClick} />
-                            <span className='badge badge-warning' id='lblCartCount'> {amountProductInCart} </span>
-                        </div>
-                    }
+                                    <Menu
+                                        id="user-menu"
+                                        anchorEl={anchorEl}
+                                        open={open}
+                                        onClose={handleClose}
+                                        MenuListProps={{
+                                            'aria-labelledby': 'user',
+                                        }}
 
-                </Navbar.Text>
-                : 
-                <Navbar.Text style={{ fontSize: 18 }}>
-                    {(user == undefined || user == null) ? <div><FontAwesomeIcon style={{backgroundColor: "none"}} onClick={goToLoginPage} className="text-warning ms-2" icon={faCircleUser} /> <small onClick={goToLoginPage} className="ms-2 mr-2 text-white">Đăng nhập</small>
-        
-                        <FontAwesomeIcon className="text-danger ms-2" icon={faCartShopping} onClick={goToLoginPage} />
-                    </div>
+                                    >
+                                        <MenuItem style={{ fontSize: 14 }} onClick={onInfoAccountClick}>Thông tin tài khoản</MenuItem>
+                                        <MenuItem style={{ fontSize: 14 }} onClick={onOrderBoughtClick}>Đơn hàng đã mua</MenuItem>
+                                        <MenuItem style={{ fontSize: 14 }} onClick={onLogOutClick}>Đăng xuất</MenuItem>
+                                    </Menu>
+                                    <FontAwesomeIcon className="text-warning ms-2 mr-2" icon={faBell} />
+                                    <FontAwesomeIcon style={{ color: "#FFFFFF" }} className="ms-2" icon={faCartShopping} type="button" onClick={onCartClick} />
+                                    <span className='badge badge-warning' id='lblCartCount'> {amountProductInCart} </span>
+                                </div>
+                            }
 
-                        : <div style={{display: "inline"}}>
-                            <img
-                                id="user"
-                                aria-controls={open ? 'user-menu' : undefined}
-                                className="mb-1"
-                                aria-expanded={open ? 'true' : undefined}
-                                onClick={handleClick}
-                                src={user.photoURL} style={{ width: 20, height: 20, borderRadius: 40 }}
-                            >
-                            </img>
-                            <Menu
-                                id="user-menu"
-                                anchorEl={anchorEl}
-                                open={open}
-                                onClose={handleClose}
-                                MenuListProps={{
-                                    'aria-labelledby': 'user',
-                                }}
-                                
-                            >
-                                <MenuItem style={{fontSize: 14}} onClick={onInfoAccountClick}>Thông tin tài khoản</MenuItem>
-                                <MenuItem style={{fontSize: 14}} onClick={onOrderBoughtClick}>Đơn hàng đã mua</MenuItem>
-                                <MenuItem style={{fontSize: 14}} onClick={onLogOutClick}>Đăng xuất</MenuItem>
-                            </Menu>
-                            <FontAwesomeIcon className="text-warning ms-2 mr-2" icon={faBell} />
-                            <FontAwesomeIcon style={{ color: "#FFFFFF" }} className="ms-2" icon={faCartShopping} onClick={onCartClick} />
-                            <span className='badge badge-warning' id='lblCartCount'> {amountProductInCart} </span>
-                        </div>
-                    }
+                        </Navbar.Text>
+                        :
+                        <Navbar.Text style={{ fontSize: 18 }}>
+                            {(user == undefined || user == null) ? <div><FontAwesomeIcon style={{ backgroundColor: "none" }} onClick={goToLoginPage} className="text-warning ms-2" icon={faCircleUser} /> <small onClick={goToLoginPage} className="ms-2 mr-2 text-white">Đăng nhập</small>
 
-                </Navbar.Text>
+                                <FontAwesomeIcon className="text-danger ms-2" icon={faCartShopping} onClick={goToLoginPage} />
+                            </div>
+
+                                : <div style={{ display: "inline" }}>
+                                    <img
+                                        id="user"
+                                        aria-controls={open ? 'user-menu' : undefined}
+                                        className="mb-1"
+                                        aria-expanded={open ? 'true' : undefined}
+                                        onClick={handleClick}
+                                        src={user.photoURL} style={{ width: 20, height: 20, borderRadius: 40 }}
+                                    >
+                                    </img>
+                                    <Menu
+                                        id="user-menu"
+                                        anchorEl={anchorEl}
+                                        open={open}
+                                        onClose={handleClose}
+                                        MenuListProps={{
+                                            'aria-labelledby': 'user',
+                                        }}
+
+                                    >
+                                        <MenuItem style={{ fontSize: 14 }} onClick={onInfoAccountClick}>Thông tin tài khoản</MenuItem>
+                                        <MenuItem style={{ fontSize: 14 }} onClick={onOrderBoughtClick}>Đơn hàng đã mua</MenuItem>
+                                        <MenuItem style={{ fontSize: 14 }} onClick={onLogOutClick}>Đăng xuất</MenuItem>
+                                    </Menu>
+                                    <FontAwesomeIcon className="text-warning ms-2 mr-2" icon={faBell} />
+                                    <FontAwesomeIcon style={{ color: "#FFFFFF" }} className="ms-2" icon={faCartShopping} onClick={onCartClick} />
+                                    <span className='badge badge-warning' id='lblCartCount'> {amountProductInCart} </span>
+                                </div>
+                            }
+
+                        </Navbar.Text>
                 }
             </Navbar.Collapse>
-                
-            
-            
-            
-            
+
+
+
+
+
 
             <Modal
                 open={openModalSeeOrderBought}
                 onClose={onCloseModalSeeOrderBoughtClick}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-confirm"
-                style={{borderRadius: 10}}
+                style={{ borderRadius: 10 }}
             >
                 <Box sx={widthHandler > 800 ? style2 : styleMobile} style={{ backgroundColor: "white" }}>
                     <Typography mb={2} id="modal-modal-title" variant="h5" component="h2">
                         <strong>Đơn hàng đã mua!</strong><br></br>
                     </Typography>
-                    
+
                     <Grid container>
                         <Grid item xs={12} md={12} lg={12}>
-                            
+
                             <TableContainer component={Paper}>
                                 <Table sx={{ minWidth: 650 }} aria-label="cart table">
                                     <TableHead >
                                         <TableRow>
-                                            <TableCell  align="center">STT</TableCell>
-                                            <TableCell  align="center">Mã đơn hàng</TableCell>
-                                            <TableCell  align="center">Số sản phẩm</TableCell>
-                                            <TableCell  align="center">Trạng thái</TableCell>
-                                            <TableCell  align="center">Số Tiền</TableCell>
-                                            <TableCell  align="center">Ngày đặt hàng</TableCell>
-                                            <TableCell  align="center">Thao tác</TableCell>
+                                            <TableCell align="center">STT</TableCell>
+                                            <TableCell align="center">Mã đơn hàng</TableCell>
+                                            <TableCell align="center">Số sản phẩm</TableCell>
+                                            <TableCell align="center">Trạng thái</TableCell>
+                                            <TableCell align="center">Số Tiền</TableCell>
+                                            <TableCell align="center">Ngày đặt hàng</TableCell>
+                                            <TableCell align="center">Thao tác</TableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
@@ -528,13 +527,13 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
                                                 <StyledTableCell align="center">{index + 1}</StyledTableCell>
                                                 <StyledTableCell align="center">{row._id}</StyledTableCell>
                                                 <StyledTableCell align="center">{row.orderDetails.length}</StyledTableCell>
-                                                <StyledTableCell align="center">{row.status == 0 ? "Đã tiếp nhận" : row.status == 1 ? "Đang giao" : row.status == 2 ? "Đã giao thành công" : "Đã hủy" }</StyledTableCell>
+                                                <StyledTableCell align="center">{row.status == 0 ? "Đã tiếp nhận" : row.status == 1 ? "Đang giao" : row.status == 2 ? "Đã giao thành công" : "Đã hủy"}</StyledTableCell>
                                                 <StyledTableCell align="center">{sumMoney ? (sumMoney[index]).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : 0}đ</StyledTableCell>
                                                 <StyledTableCell align="center">{dtfUS.format(new Date(row.orderDate))}</StyledTableCell>
                                                 <StyledTableCell align="center">
-                                                    <Button onClick={() => { onDetailClick(row._id) }}>Chi tiết</Button>
+                                                    <Button onClick={() => { onDetailClick(row._id) }} style={{ backgroundColor: "#288641", padding: "5px 5px", fontSize: "7px" }} variant="contained">Chi tiết</Button>
                                                 </StyledTableCell>
-                                                
+
                                             </StyledTableRow >
                                         ))
                                             :
@@ -545,7 +544,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
                                                 <StyledTableCell></StyledTableCell>
                                                 <StyledTableCell></StyledTableCell>
                                                 <StyledTableCell></StyledTableCell>
-                                                
+
                                             </StyledTableRow>
                                         }
 
@@ -575,7 +574,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
                 onClose={onCloseModalDetailOrderClick}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-confirm"
-                style={{borderRadius: 10}}
+                style={{ borderRadius: 10 }}
             >
                 <Box sx={widthHandler > 800 ? style2 : styleMobile} style={{ backgroundColor: "white" }}>
                     <Typography mb={2} id="modal-modal-title" variant="h5" component="h2">
@@ -589,11 +588,11 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
                                     <TableHead>
                                         <TableRow>
                                             <TableCell align="center">STT</TableCell>
-                                            <TableCell  align="center">Sản phẩm</TableCell>
-                                            <TableCell  align="center">Tên sản phẩm</TableCell>
-                                            <TableCell  align="center">Đơn giá</TableCell>
-                                            <TableCell  align="center">Số lượng sản phẩm</TableCell>
-                                            <TableCell  align="center">Số Tiền</TableCell>
+                                            <TableCell align="center">Sản phẩm</TableCell>
+                                            <TableCell align="center">Tên sản phẩm</TableCell>
+                                            <TableCell align="center">Đơn giá</TableCell>
+                                            <TableCell align="center">Số lượng sản phẩm</TableCell>
+                                            <TableCell align="center">Số Tiền</TableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
@@ -604,8 +603,8 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
                                                 <StyledTableCell align="center">{arrayProductState ? arrayProductState[index].name : ""}</StyledTableCell>
                                                 <StyledTableCell align="center">{(row.priceEach).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} vnđ</StyledTableCell>
                                                 <StyledTableCell align="center">{row.quantity}</StyledTableCell>
-                                                
-                                                <StyledTableCell align="center">{(row.quantity*row.priceEach).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} vnđ</StyledTableCell>
+
+                                                <StyledTableCell align="center">{(row.quantity * row.priceEach).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} vnđ</StyledTableCell>
                                             </StyledTableRow >
                                         ))
                                             :
@@ -654,7 +653,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
                                         </Col>
                                         <Col xs="9" sm="8">
                                             <Input onChange={onFullnameChange} defaultValue={infoCustomer ? infoCustomer.fullName : ""} align="center" />
-                                            <span style={{color: colorFullname}}>{charFullname}</span>
+                                            <span style={{ color: colorFullname }}>{charFullname}</span>
                                         </Col>
                                     </Row>
                                 </Col>
@@ -669,7 +668,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
                                         </Col>
                                         <Col xs="9" sm="8">
                                             <Input onChange={onPhoneNumberChange} defaultValue={infoCustomer ? infoCustomer.phoneNumber : ""} align="center" />
-                                            <span style={{color: colorPhoneNumber}}>{charPhoneNumber}</span>
+                                            <span style={{ color: colorPhoneNumber }}>{charPhoneNumber}</span>
                                         </Col>
                                     </Row>
                                 </Col>
@@ -700,7 +699,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
                                         </Col>
                                         <Col xs="9" sm="8">
                                             <Input onChange={onAddressChange} defaultValue={infoCustomer ? infoCustomer.address : ""} />
-                                            <span style={{color: colorAddress}}>{charAddress}</span>
+                                            <span style={{ color: colorAddress }}>{charAddress}</span>
                                         </Col>
                                     </Row>
                                 </Col>
@@ -717,7 +716,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
                                         </Col>
                                         <Col xs="9" sm="8">
                                             <Input onChange={onCityChange} defaultValue={infoCustomer ? infoCustomer.city : ""} />
-                                            <span style={{color: colorCity}}>{charCity}</span>
+                                            <span style={{ color: colorCity }}>{charCity}</span>
                                         </Col>
                                     </Row>
                                 </Col>
@@ -732,7 +731,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
                                         </Col>
                                         <Col xs="9" sm="8">
                                             <Input onChange={onCountryChange} defaultValue={infoCustomer ? infoCustomer.country : ""} />
-                                            <span style={{color: colorCountry}}>{charCountry}</span>
+                                            <span style={{ color: colorCountry }}>{charCountry}</span>
                                         </Col>
                                     </Row>
                                 </Col>
@@ -743,10 +742,10 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
                         <Col xs="12" sm="12">
                             <Row className="mt-4 mb-4">
                                 <Col xs="6" sm="6">
-                                    <Button onClick={onBtnCloseModalInFoCusTomerClick} className="bg-success w-75 text-white">Hủy Bỏ</Button>
+                                    <Button onClick={onBtnCloseModalInFoCusTomerClick} className="bg-secondary w-75 text-white">Hủy Bỏ</Button>
                                 </Col>
                                 <Col xs="6" sm="6">
-                                <Button onClick={onUpdateModalInFoCustomerClick} className="bg-success w-75 text-white">Update</Button>
+                                    <Button onClick={onUpdateModalInFoCustomerClick} style={{ backgroundColor: "#288641", padding: "5px 5px", width: "75%" }} variant="contained">Update</Button>
                                 </Col>
                             </Row>
                         </Col>
@@ -760,7 +759,7 @@ function IconNavBar({ user, setAmountProductInCart, amountProductInCart, widthHa
                     </Alert>
                 </Snackbar>
             </div>
-            
+
         </>
     )
 }

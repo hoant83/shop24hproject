@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 function handleClick(event) {
   event.preventDefault();
-  console.info('You clicked a breadcrumb.');
+
 }
 
 export default function BreadcrumComponent() {
@@ -19,19 +19,19 @@ export default function BreadcrumComponent() {
   }
   return (
     <Container>
-        <div role="presentation" onClick={handleClick}>
+      <div role="presentation" onClick={handleClick}>
         <Breadcrumbs aria-label="breadcrumb">
-            <Link
+          <Link
             underline="hover"
             color="inherit"
             onClick={onHomeClick}
             type="button"
-            >
+          >
             Home
-            </Link>
-            <Typography color="text.primary">All Products</Typography>
+          </Link>
+          <Typography color="text.primary">All Products</Typography>
         </Breadcrumbs>
-        </div>
+      </div>
     </Container>
   );
 }

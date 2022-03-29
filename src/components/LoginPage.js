@@ -22,14 +22,14 @@ const style2 = {
     width: 800,
     p: 4
 };
-    var validUserName = false;
-    var validPassword = false;
-    var validFullname = false;
-    var validPhoneNumber = false;
-    var validEmail = false;
-    var validAddress = false;
-    var validCity = false;
-    var validCountry = false;
+var validUserName = false;
+var validPassword = false;
+var validFullname = false;
+var validPhoneNumber = false;
+var validEmail = false;
+var validAddress = false;
+var validCity = false;
+var validCountry = false;
 
 function LoginPage({ user, setUser, widthHandler, heightHandler }) {
     const vertical = "top"
@@ -88,7 +88,7 @@ function LoginPage({ user, setUser, widthHandler, heightHandler }) {
     const loginGoogle = () => {
         auth.signInWithPopup(googleProvider)
             .then((result) => {
-                console.log(result);
+
                 setUser(result.user);
                 findEmailAPI(result.user.email, result.user.displayName) // tìm mail xem có tồn tại trên db ko
             })
@@ -101,7 +101,7 @@ function LoginPage({ user, setUser, widthHandler, heightHandler }) {
         getData("https://shop24h-backend.herokuapp.com/customers/" + paramEmail)
             .then((data) => {
                 if (data.customer) {
-                    console.log(data.customer)
+
                     goToHomePage()
                 }
                 else {
@@ -128,7 +128,7 @@ function LoginPage({ user, setUser, widthHandler, heightHandler }) {
         }
         getData("https://shop24h-backend.herokuapp.com/customers", body)
             .then((data) => {
-                console.log(data)
+
                 goToHomePage()
             })
             .catch((error) => {
@@ -146,27 +146,27 @@ function LoginPage({ user, setUser, widthHandler, heightHandler }) {
         var usernameRegex = /^[a-zA-Z0-9]+$/;
         var checkChar = usernameRegex.test(event.target.value);
         setUserNameModal(event.target.value);
-        if(event.target.value.length > 5 && checkChar === true){
+        if (event.target.value.length > 5 && checkChar === true) {
             setColorUserName("#288641");
             setCharUserName("✓");
             validUserName = true;
-            console.log(validUserName)
+
         }
-        else{
+        else {
             setColorUserName("red");
             setCharUserName("x");
             validUserName = false;
-            console.log(validUserName)
+
         }
     }
     const onPasswordChange = (event) => {
         setPasswordModal(event.target.value);
-        if(event.target.value.length > 7){
+        if (event.target.value.length > 7) {
             setColorPassword("#288641");
             setCharPassword("✓");
             validPassword = true;
         }
-        else{
+        else {
             setColorPassword("red");
             setCharPassword("x");
             validPassword = false;
@@ -174,12 +174,12 @@ function LoginPage({ user, setUser, widthHandler, heightHandler }) {
     }
     const onFullnameChange = (event) => {
         setFullNameModal(event.target.value);
-        if(event.target.value.length > 2){
+        if (event.target.value.length > 2) {
             setColorFullname("#288641");
             setCharFullname("✓");
             validFullname = true;
         }
-        else{
+        else {
             setColorFullname("red");
             setCharFullname("x");
             validFullname = false;
@@ -190,12 +190,12 @@ function LoginPage({ user, setUser, widthHandler, heightHandler }) {
         const filterPhone2 = /(([02]))+([0-9]{9})\b/
         var checkPhone = (filterPhone.test(event.target.value) || filterPhone2.test(event.target.value))
         setPhoneNumberModal(event.target.value);
-        if(checkPhone){
+        if (checkPhone) {
             setColorPhoneNumber("#288641");
             setCharPhoneNumber("✓");
             validPhoneNumber = true;
         }
-        else{
+        else {
             setColorPhoneNumber("red");
             setCharPhoneNumber("x");
             validPhoneNumber = false;
@@ -204,12 +204,12 @@ function LoginPage({ user, setUser, widthHandler, heightHandler }) {
     const onEmailChange = (event) => {
         const filterEmail = /^([a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?)$/;
         setEmailModal(event.target.value);
-        if(filterEmail.test(event.target.value)){
+        if (filterEmail.test(event.target.value)) {
             setColorEmail("#288641");
             setCharEmail("✓");
             validEmail = true;
         }
-        else{
+        else {
             setColorEmail("red");
             setCharEmail("x");
             validEmail = false;
@@ -217,12 +217,12 @@ function LoginPage({ user, setUser, widthHandler, heightHandler }) {
     }
     const onAddressChange = (event) => {
         setAddressModal(event.target.value);
-        if(event.target.value != ""){
+        if (event.target.value != "") {
             setColorAddress("#288641");
             setCharAddress("✓");
             validAddress = true;
         }
-        else{
+        else {
             setColorAddress("red");
             setCharAddress("x");
             validAddress = false;
@@ -230,12 +230,12 @@ function LoginPage({ user, setUser, widthHandler, heightHandler }) {
     }
     const onCityChange = (event) => {
         setCityModal(event.target.value);
-        if(event.target.value != ""){
+        if (event.target.value != "") {
             setColorCity("#288641");
             setCharCity("✓");
             validCity = true;
         }
-        else{
+        else {
             setColorCity("red");
             setCharCity("x");
             validCity = false;
@@ -243,12 +243,12 @@ function LoginPage({ user, setUser, widthHandler, heightHandler }) {
     }
     const onCountryChange = (event) => {
         setCountryModal(event.target.value);
-        if(event.target.value != ""){
+        if (event.target.value != "") {
             setColorCountry("#288641");
             setCharCountry("✓");
             validCountry = true;
         }
-        else{
+        else {
             setColorCountry("red");
             setCharCountry("x");
             validCountry = false;
@@ -256,67 +256,67 @@ function LoginPage({ user, setUser, widthHandler, heightHandler }) {
     }
     const onBtnDangKyClick = () => {
         var vCheckValidForm = validateForm();
-        if(vCheckValidForm){
+        if (vCheckValidForm) {
             getAllCustomerAndCheck()
         }
     }
     const validateForm = () => {
-        console.log(validUserName)
-        if(validUserName === false){
+
+        if (validUserName === false) {
             setStatusModal("error");
             setNoidungAlertValid("User name tối thiểu 6 ký tự và chỉ chứa chữ cái không dấu và số!");
             setOpenAlert(true);
             return false;
         }
-        if(validPassword === false){
+        if (validPassword === false) {
             setStatusModal("error");
             setNoidungAlertValid("Password phải có tối thiểu 8 ký tự!");
             setOpenAlert(true);
             return false;
         }
-        if(validFullname === false){
+        if (validFullname === false) {
             setStatusModal("error");
             setNoidungAlertValid("Họ tên phải có tối thiểu 2 ký tự!");
             setOpenAlert(true);
             return false;
         }
-        if(validPhoneNumber === false){
+        if (validPhoneNumber === false) {
             setStatusModal("error");
             setNoidungAlertValid("Số điện thoại không đúng!");
             setOpenAlert(true);
             return false;
         }
-        if(validEmail === false){
+        if (validEmail === false) {
             setStatusModal("error");
             setNoidungAlertValid("Email không đúng!");
             setOpenAlert(true);
             return false;
         }
-        if(validAddress === false){
+        if (validAddress === false) {
             setStatusModal("error");
             setNoidungAlertValid("Địa chỉ không được rỗng!");
             setOpenAlert(true);
             return false;
         }
-        if(validAddress === false){
+        if (validAddress === false) {
             setStatusModal("error");
             setNoidungAlertValid("Địa chỉ không được rỗng!");
             setOpenAlert(true);
             return false;
         }
-        if(validCity === false){
+        if (validCity === false) {
             setStatusModal("error");
             setNoidungAlertValid("Thành phố không được rỗng!");
             setOpenAlert(true);
             return false;
         }
-        if(validCountry === false){
+        if (validCountry === false) {
             setStatusModal("error");
             setNoidungAlertValid("Quốc gia không được rỗng!");
             setOpenAlert(true);
             return false;
         }
-        else{
+        else {
             return true;
         }
     }
@@ -324,13 +324,13 @@ function LoginPage({ user, setUser, widthHandler, heightHandler }) {
     const getAllCustomerAndCheck = () => {
         getData("https://shop24h-backend.herokuapp.com/customers/")
             .then((data) => {
-                console.log(data)
-                if(data.customer == undefined){
+
+                if (data.customer == undefined) {
                     console.log("có thể tạo customer")
                 }
-                else{
-                    for(let i = 0; i < data.customer.length; i++){
-                        
+                else {
+                    for (let i = 0; i < data.customer.length; i++) {
+
                     }
                 }
             })
@@ -348,27 +348,27 @@ function LoginPage({ user, setUser, widthHandler, heightHandler }) {
     }
     return (
         <>
-        <div style={{ backgroundColor: "#26a69a", backgroundSize: "cover", height: heightHandler }}>
+            <div style={{ backgroundColor: "#26a69a", backgroundSize: "cover", height: heightHandler }}>
                 <Div>
                     <FormControl style={{ backgroundColor: "#e3f2fd", alignItems: "center", marginTop: 60 }}>
-                    <Container>
-                        <br></br>
-                        <Button onClick={loginGoogle} style={{ borderRadius: 25, backgroundColor: "#b71c1c", padding: "5px 10px", fontSize: "20px", width: "90%", alignContent: "center", fontFamily: "italic" }} variant="contained"><i><FontAwesomeIcon className="text-warning me-3" icon={faGoogle} /> Đăng nhập với <strong> Google</strong></i></Button>
-                        <br></br>
-                        <br></br>
-                        <br></br>
-                        <p>hoặc</p>
-                        <TextField className='borderRadius-Texfield' id="input-username" label="Username" variant="outlined" sx={{ width: "90%" }} />
+                        <Container>
+                            <br></br>
+                            <Button onClick={loginGoogle} style={{ borderRadius: 25, backgroundColor: "#b71c1c", padding: "5px 10px", fontSize: "20px", width: "90%", alignContent: "center", fontFamily: "italic" }} variant="contained"><i><FontAwesomeIcon className="text-warning me-3" icon={faGoogle} /> Đăng nhập với <strong> Google</strong></i></Button>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <p>hoặc</p>
+                            <TextField className='borderRadius-Texfield' id="input-username" label="Username" variant="outlined" sx={{ width: "90%" }} />
 
-                        <TextField className='borderRadius-Texfield' id="input-password" label="Password" variant="outlined" sx={{ width: "90%" }} />
-                        <br></br>
-                        <Button onClick={onBtnSignInClick} style={{ borderRadius: 25, backgroundColor: "#03a9f4", padding: "5px 10px", fontSize: "20px", width: "90%", alignContent: "center", marginBottom: 55 }} variant="contained"><i>Đăng nhập</i></Button>
+                            <TextField className='borderRadius-Texfield' id="input-password" label="Password" variant="outlined" sx={{ width: "90%" }} />
+                            <br></br>
+                            <Button onClick={onBtnSignInClick} style={{ borderRadius: 25, backgroundColor: "#03a9f4", padding: "5px 10px", fontSize: "20px", width: "90%", alignContent: "center", marginBottom: 55 }} variant="contained"><i>Đăng nhập</i></Button>
                         </Container>
                     </FormControl>
-                    
+
                 </Div>
                 <p className='text-center text-white'>Bạn chưa có tài khoản? <strong type="button" onClick={onSignUpHereClick} className='text-warning'>Đăng ký</strong></p>
-                
+
                 <p className='text-center text-white text-decoration-underline' type="button" onClick={tiepTucLaKhachClick}>Tiếp tục là khách</p>
             </div>
             <Modal
@@ -392,8 +392,8 @@ function LoginPage({ user, setUser, widthHandler, heightHandler }) {
                                             <label>User name:</label>
                                         </Col>
                                         <Col sm="8">
-                                            <Input defaultValue={userNameModal} placeholder='Tối thiểu 6 ký tự' onChange={onUserNameChange}/>
-                                            <span style={{color: colorUserName}}>{charUserName}</span>
+                                            <Input defaultValue={userNameModal} placeholder='Tối thiểu 6 ký tự' onChange={onUserNameChange} />
+                                            <span style={{ color: colorUserName }}>{charUserName}</span>
                                         </Col>
                                     </Row>
                                 </Col>
@@ -408,7 +408,7 @@ function LoginPage({ user, setUser, widthHandler, heightHandler }) {
                                         </Col>
                                         <Col sm="8">
                                             <Input defaultValue={passwordModal} onChange={onPasswordChange} type='password' />
-                                            <span style={{color: colorPassword}}>{charPassword}</span>
+                                            <span style={{ color: colorPassword }}>{charPassword}</span>
                                         </Col>
                                     </Row>
                                 </Col>
@@ -424,8 +424,8 @@ function LoginPage({ user, setUser, widthHandler, heightHandler }) {
                                             <label>Họ tên:</label>
                                         </Col>
                                         <Col sm="8">
-                                            <Input defaultValue={fullNameModal} onChange={onFullnameChange}/>
-                                            <span style={{color: colorFullname}}>{charFullname}</span>
+                                            <Input defaultValue={fullNameModal} onChange={onFullnameChange} />
+                                            <span style={{ color: colorFullname }}>{charFullname}</span>
                                         </Col>
                                     </Row>
                                 </Col>
@@ -439,8 +439,8 @@ function LoginPage({ user, setUser, widthHandler, heightHandler }) {
                                             <label >Số điện thoại:</label>
                                         </Col>
                                         <Col sm="8">
-                                            <Input defaultValue={phoneNumberModal} type='number' onChange={onPhoneNumberChange}/>
-                                            <span style={{color: colorPhoneNumber}}>{charPhoneNumber}</span>
+                                            <Input defaultValue={phoneNumberModal} type='number' onChange={onPhoneNumberChange} />
+                                            <span style={{ color: colorPhoneNumber }}>{charPhoneNumber}</span>
                                         </Col>
                                     </Row>
                                 </Col>
@@ -456,8 +456,8 @@ function LoginPage({ user, setUser, widthHandler, heightHandler }) {
                                             <label >Email:</label>
                                         </Col>
                                         <Col sm="8">
-                                            <Input defaultValue={emailModal} onChange={onEmailChange}/>
-                                            <span style={{color: colorEmail}}>{charEmail}</span>
+                                            <Input defaultValue={emailModal} onChange={onEmailChange} />
+                                            <span style={{ color: colorEmail }}>{charEmail}</span>
                                         </Col>
                                     </Row>
                                 </Col>
@@ -471,8 +471,8 @@ function LoginPage({ user, setUser, widthHandler, heightHandler }) {
                                             <label >Địa chỉ:</label>
                                         </Col>
                                         <Col sm="8">
-                                            <Input defaultValue={addressModal} onChange={onAddressChange}/>
-                                            <span style={{color: colorAddress}}>{charAddress}</span>
+                                            <Input defaultValue={addressModal} onChange={onAddressChange} />
+                                            <span style={{ color: colorAddress }}>{charAddress}</span>
                                         </Col>
                                     </Row>
                                 </Col>
@@ -488,8 +488,8 @@ function LoginPage({ user, setUser, widthHandler, heightHandler }) {
                                             <label >Thành phố:</label>
                                         </Col>
                                         <Col sm="8">
-                                            <Input defaultValue={cityModal} onChange={onCityChange}/>
-                                            <span style={{color: colorCity}}>{charCity}</span>
+                                            <Input defaultValue={cityModal} onChange={onCityChange} />
+                                            <span style={{ color: colorCity }}>{charCity}</span>
                                         </Col>
                                     </Row>
                                 </Col>
@@ -503,8 +503,8 @@ function LoginPage({ user, setUser, widthHandler, heightHandler }) {
                                             <label >Quốc gia:</label>
                                         </Col>
                                         <Col sm="8">
-                                            <Input defaultValue={countryModal} onChange={onCountryChange}/>
-                                            <span style={{color: colorCountry}}>{charCountry}</span>
+                                            <Input defaultValue={countryModal} onChange={onCountryChange} />
+                                            <span style={{ color: colorCountry }}>{charCountry}</span>
                                         </Col>
                                     </Row>
                                 </Col>
@@ -515,7 +515,7 @@ function LoginPage({ user, setUser, widthHandler, heightHandler }) {
                         <Col sm="12">
                             <Row className="mt-4 mb-4">
                                 <Col sm="6">
-                                <Button onClick={onBtnCancelClick} className="bg-success w-75 text-white">Hủy Bỏ</Button>
+                                    <Button onClick={onBtnCancelClick} className="bg-success w-75 text-white">Hủy Bỏ</Button>
                                 </Col>
                                 <Col sm="6">
                                     <Button onClick={onBtnDangKyClick} className="bg-success w-75 text-white">Đăng ký</Button>

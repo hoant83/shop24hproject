@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 
 function handleClick(event) {
   event.preventDefault();
-  console.info('You clicked a breadcrumb.');
 }
 
 export default function BreadcrumCartPage() {
@@ -18,7 +17,6 @@ export default function BreadcrumCartPage() {
     navigate("/")
   }
   const onAllProductClick = () => {
-    console.log("All product Breadcrumb được click!")
     navigate("/categoriesproductpage")
   }
   return (
