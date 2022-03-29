@@ -5,7 +5,10 @@ import anh2 from "../../assets/images/anh2.png"
 import anh3 from "../../assets/images/anh3.png"
 import anh4 from "../../assets/images/anh4.jpg"
 
-function CarouselComponent ({widthHandler}){
+function CarouselComponent ({widthHandler, goToCategoriesProductPage}){
+    const onBtnGoToProductClick = () => {
+        goToCategoriesProductPage()
+    }
         return (
             <>{
                 widthHandler > 800 ?
@@ -17,12 +20,12 @@ function CarouselComponent ({widthHandler}){
                                     <Row>
                                     <Col sm="12" style={{padding: "4rem 10rem"}}>
                                         <Row>
-                                        <Col sm="6" className='ms-5'>
-                                            <strong>Fruit Ip Nice</strong>
-                                            <h2 >Welcome to Devcamp Fruit</h2>
+                                        <Col sm="6" className='ms-2'>
+                                            <strong>Trái cây sạch nhất</strong>
+                                            <h2 >Chào mừng đến với Fruit Ninja</h2>
                                             <br></br>
-                                            <p >Devcamp Fruit is an online shop sell marketplace with over 5000 kind of fruits and 1 million kind of juices. Come with us to enjoy many thing we have.</p>
-                                            <Button className="btn btn-warning text-dark">Browse Courses</Button>
+                                            <p >Fruit Ninja là cửa hàng online chuyên bán trái cây sạch, sản phẩm hoàn toàn từ hữu cơ, được nhập từ các tỉnh nổi tiếng về trái cây như Đà Lạt, Kontum, Đắc Lắc, Vĩnh Long, Đồng Tháp, Bến Tre...</p>
+                                            <Button onClick={onBtnGoToProductClick} className="btn btn-warning text-dark">Đến trang sản phẩm</Button>
                                         </Col>
                                         <Col sm="4">
                                             <img src={anh2} style={{height: "300px"}} alt="banner"/>
@@ -39,11 +42,11 @@ function CarouselComponent ({widthHandler}){
                                     <Row>
                                     <Col sm="12" style={{padding: "4rem 10rem"}}>
                                         <Row>
-                                        <Col sm="6" className='ms-5'>
-                                            <strong>Fruit Ip Nice</strong>
-                                            <h3 >Welcome to Ionic Course365 Learning Center</h3>
-                                            <p >Ionic Course365 is an online learning and teaching marketplace with over 5000 courses and 1 million students. Instructor and expertly crafted courses, designed for the modern students and entrepreneur.</p>
-                                            <Button className="btn btn-warning text-dark">See more</Button>
+                                        <Col sm="6" className='ms-2'>
+                                            <strong>Trái cây tươi nhất</strong>
+                                            <h3 >Chào mừng đến với Fruit Ninja</h3>
+                                            <p >Fruit Ninja chỉ bán sản phẩm tươi, tất cả đã được kiểm tra cẩn thận trước khi đến tay khách hàng, cửa hàng hiện có 4 containers lạnh chạy liên tục để đảm bảo độ tươi.</p>
+                                            <Button onClick={onBtnGoToProductClick} className="btn btn-warning text-dark">Đến trang sản phẩm</Button>
                                         </Col>
                                         <Col sm="4">
                                             <img src={anh3} style={{height: "300px"}} alt="banner"/>
@@ -60,11 +63,11 @@ function CarouselComponent ({widthHandler}){
                                     <Row>
                                     <Col sm="12" style={{padding: "4rem 10rem"}}>
                                         <Row>
-                                        <Col sm="6" className='ms-5'>
-                                            <strong>Fruit Ip Nice</strong>
-                                            <h3 >Welcome to Ionic Course365 Learning Center</h3>
-                                            <p >Ionic Course365 is an online learning and teaching marketplace with over 5000 courses and 1 million students. Instructor and expertly crafted courses, designed for the modern students and entrepreneur.</p>
-                                            <Button className="btn btn-warning text-dark">Browse Courses</Button>
+                                        <Col sm="6" className='ms-2'>
+                                            <strong>Trái cây đa dạng nhất</strong>
+                                            <h3 >Chào mừng đến với Fruit Ninja</h3>
+                                            <p >Ninja Fruit hiện có hơn 300 loại trái cây được chọn lọc từ những vùng đất nổi tiếng nhất của Việt Nam. Để biết mùa nào trái cây nào là ngon nhất, hãy liên hệ với chúng tôi để được tư vấn.</p>
+                                            <Button onClick={onBtnGoToProductClick} className="btn btn-warning text-dark">Đến trang sản phẩm</Button>
                                         </Col>
                                         <Col sm="4">
                                             <img src={anh4} style={{height: "300px"}} alt="banner"/>
@@ -85,11 +88,11 @@ function CarouselComponent ({widthHandler}){
                             <Col sm="12">
                                 <Row>
                                 <Col sm="12" >
-                                    <strong>Fruit Ip Nice</strong>
-                                    <h2 >Welcome to Devcamp Fruit</h2>
+                                    <strong>Trái cây sạch nhất</strong>
+                                    <h2 >Chào mừng đến với Fruit Ninja</h2>
                                     <br></br>
-                                    <p >Devcamp Fruit is an online shop sell marketplace with over 5000 kind of fruits and 1 million kind of juices. Come with us to enjoy many thing we have.</p>
-                                    <Button className="btn btn-warning text-dark">Browse Courses</Button>
+                                    <p >Fruit Ninja là cửa hàng online chuyên bán trái cây sạch, sản phẩm hoàn toàn từ hữu cơ, được nhập từ các tỉnh nổi tiếng về trái cây như Đà Lạt, Kontum, Đắc Lắc, Vĩnh Long, Đồng Tháp, Bến Tre...</p>
+                                    <Button onClick={onBtnGoToProductClick} className="btn btn-warning text-dark">Đến trang sản phẩm</Button>
                                 </Col>
                                 </Row>
                             </Col>
@@ -113,11 +116,11 @@ function CarouselComponent ({widthHandler}){
                             <Col sm="12">
                                 <Row>
                                 <Col sm="12" >
-                                    <strong>Fruit Ip Nice</strong>
-                                    <h2 >Welcome to Devcamp Fruit</h2>
+                                    <strong>Trái cây tươi nhất</strong>
+                                    <h2 >Chào mừng đến với Fruit Ninja</h2>
                                     <br></br>
-                                    <p >Devcamp Fruit is an online shop sell marketplace with over 5000 kind of fruits and 1 million kind of juices. Come with us to enjoy many thing we have.</p>
-                                    <Button className="btn btn-warning text-dark">Browse Courses</Button>
+                                    <p >Fruit Ninja chỉ bán sản phẩm tươi, tất cả đã được kiểm tra cẩn thận trước khi đến tay khách hàng, cửa hàng hiện có 4 containers lạnh chạy liên tục để đảm bảo độ tươi.</p>
+                                    <Button onClick={onBtnGoToProductClick} className="btn btn-warning text-dark">Đến trang sản phẩm</Button>
                                 </Col>
                                 </Row>
                             </Col>
@@ -141,11 +144,11 @@ function CarouselComponent ({widthHandler}){
                             <Col sm="12">
                                 <Row>
                                 <Col sm="12" >
-                                    <strong>Fruit Ip Nice</strong>
-                                    <h2 >Welcome to Devcamp Fruit</h2>
+                                    <strong>Trái cây đa dạng nhất</strong>
+                                    <h2 >Chào mừng đến với Fruit Ninja</h2>
                                     <br></br>
-                                    <p >Devcamp Fruit is an online shop sell marketplace with over 5000 kind of fruits and 1 million kind of juices. Come with us to enjoy many thing we have.</p>
-                                    <Button className="btn btn-warning text-dark">Browse Courses</Button>
+                                    <p >Ninja Fruit hiện có hơn 300 loại trái cây được chọn lọc từ những vùng đất nổi tiếng nhất của Việt Nam. Để biết mùa nào trái cây nào là ngon nhất, hãy liên hệ với chúng tôi để được tư vấn.</p>
+                                    <Button onClick={onBtnGoToProductClick} className="btn btn-warning text-dark">Đến trang sản phẩm</Button>
                                 </Col>
                                 </Row>
                             </Col>

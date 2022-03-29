@@ -13,7 +13,7 @@ function Logo({widthHandler}) {
         
             widthHandler > 800 ?
             <div>
-                <Navbar.Brand type="button" onClick={onLogoClick}><img src="https://www.pngkey.com/png/full/307-3073999_fruit-ninja-fruit-ninja-logo.png" style={{width: 160, height: 60}}></img></Navbar.Brand>
+                <Navbar.Brand type="button" onClick={onLogoClick}><img className="me-5" src="https://www.pngkey.com/png/full/307-3073999_fruit-ninja-fruit-ninja-logo.png" style={{width: 160, height: 60}}></img></Navbar.Brand>
             </div> 
             :
             <div>

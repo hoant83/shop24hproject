@@ -353,21 +353,21 @@ function LoginPage({ user, setUser, widthHandler, heightHandler }) {
                     <FormControl style={{ backgroundColor: "#e3f2fd", alignItems: "center", marginTop: 60 }}>
                     <Container>
                         <br></br>
-                        <Button onClick={loginGoogle} style={{ borderRadius: 25, backgroundColor: "#b71c1c", padding: "5px 10px", fontSize: "20px", width: "90%", alignContent: "center", fontFamily: "italic" }} variant="contained"><i><FontAwesomeIcon className="text-warning me-3" icon={faGoogle} /> Sign in with <strong> Google</strong></i></Button>
+                        <Button onClick={loginGoogle} style={{ borderRadius: 25, backgroundColor: "#b71c1c", padding: "5px 10px", fontSize: "20px", width: "90%", alignContent: "center", fontFamily: "italic" }} variant="contained"><i><FontAwesomeIcon className="text-warning me-3" icon={faGoogle} /> Đăng nhập với <strong> Google</strong></i></Button>
                         <br></br>
                         <br></br>
                         <br></br>
-                        <p>or</p>
+                        <p>hoặc</p>
                         <TextField className='borderRadius-Texfield' id="input-username" label="Username" variant="outlined" sx={{ width: "90%" }} />
 
                         <TextField className='borderRadius-Texfield' id="input-password" label="Password" variant="outlined" sx={{ width: "90%" }} />
                         <br></br>
-                        <Button onClick={onBtnSignInClick} style={{ borderRadius: 25, backgroundColor: "#03a9f4", padding: "5px 10px", fontSize: "20px", width: "90%", alignContent: "center", marginBottom: 55 }} variant="contained"><i>Sign in</i></Button>
+                        <Button onClick={onBtnSignInClick} style={{ borderRadius: 25, backgroundColor: "#03a9f4", padding: "5px 10px", fontSize: "20px", width: "90%", alignContent: "center", marginBottom: 55 }} variant="contained"><i>Đăng nhập</i></Button>
                         </Container>
                     </FormControl>
                     
                 </Div>
-                <p className='text-center text-white'>Don't have an account? <strong type="button" onClick={onSignUpHereClick} className='text-warning'>Sign up here</strong></p>
+                <p className='text-center text-white'>Bạn chưa có tài khoản? <strong type="button" onClick={onSignUpHereClick} className='text-warning'>Đăng ký</strong></p>
                 
                 <p className='text-center text-white text-decoration-underline' type="button" onClick={tiepTucLaKhachClick}>Tiếp tục là khách</p>
             </div>

@@ -6,7 +6,7 @@ function ViewAll({ onViewAllClick }) {
     }
     return (
         <>
-            <Button onClick={viewAllClick} style={{ backgroundColor: "#288641" }}>View all</Button>
+            <Button onClick={viewAllClick} style={{ backgroundColor: "#288641" }}>Xem tất cả</Button>
         </>
 
     )

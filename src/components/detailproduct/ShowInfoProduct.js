@@ -1,4 +1,4 @@
-import { Container, TextField } from "@mui/material"
+import { Alert, Container, Snackbar, TextField } from "@mui/material"
 import { useEffect, useState } from "react"
 import { Image } from "react-bootstrap"
 import { Col, Row } from "reactstrap"
@@ -13,6 +13,7 @@ import anh3 from "../../assets/images/anh3.png"
 import anh4 from "../../assets/images/anh4.jpg"
 import { useNavigate, useParams } from "react-router-dom";
 function ShowInfoProduct({ id, user, setAmountProductInCart, amountProductInCart, widthHandler }) {
+
     const [subProduct, setSubProduct] = useState(null)
     const [indexProduct, setIndexProduct] = useState(-1)
     const [activeIndex, setActiveIndex] = useState(0)
@@ -21,6 +22,16 @@ function ShowInfoProduct({ id, user, setAmountProductInCart, amountProductInCart
     const navigate = useNavigate();
     const goToLoginPage = () => {
         navigate("/login");
+    }
+    const vertical = "top"
+    const horizontal = "right"
+    const [openAlert, setOpenAlert] = useState(false)
+    const [noidungAlertValid, setNoidungAlertValid] = useState("")
+    const [statusModal, setStatusModal] = useState("error")
+    const [disabledAddCartButton, setDisabledAddCartButton] = useState(false)
+ 
+    const handleCloseAlert = () => {
+        setOpenAlert(false)
     }
     // hàm gọi api
     const getData = async (paramUrl, paramOptions = {}) => {
@@ -46,6 +57,7 @@ function ShowInfoProduct({ id, user, setAmountProductInCart, amountProductInCart
     }
     const onAddToCartClick = () => {
         if (user) {
+            setDisabledAddCartButton(true)
             console.log(user.email)
             findEmailAPI(user.email);
         }
@@ -104,6 +116,10 @@ function ShowInfoProduct({ id, user, setAmountProductInCart, amountProductInCart
         getData("https://shop24h-backend.herokuapp.com/carts/" + paramCart._id, body)
             .then((data) => {
                 console.log(data)
+                setStatusModal("success");
+                setNoidungAlertValid("Update số lượng thành công!");
+                setOpenAlert(true);
+                setDisabledAddCartButton(false)
             })
             .catch((error) => {
                 console.log(error)
@@ -128,6 +144,7 @@ function ShowInfoProduct({ id, user, setAmountProductInCart, amountProductInCart
             .then((data) => {
                 console.log(data.Customer.carts.length)
                 getAllCartsOfCustomerToSetAmountOfCart(paramCustomerId)
+
             })
             .catch((error) => {
                 console.log(error)
@@ -138,6 +155,10 @@ function ShowInfoProduct({ id, user, setAmountProductInCart, amountProductInCart
             .then((data) => {
                 var cartsList = data.Carts.carts
                 setAmountProductInCart(cartsList.length)
+                setStatusModal("success");
+                setNoidungAlertValid("Đã thêm vào giỏ hàng!");
+                setOpenAlert(true);
+                setDisabledAddCartButton(false)
             })
             .catch((error) => {
                 console.log(error)
@@ -208,7 +229,7 @@ function ShowInfoProduct({ id, user, setAmountProductInCart, amountProductInCart
                                         <Button onClick={onTruClick} className="bg-secondary" style={{ width: 40, height: 40 }}>-</Button> <strong className="ms-3">{amount}</strong> <Button onClick={onCongClick} className="bg-secondary ms-3" style={{ width: 40, height: 40 }}>+</Button>
                                     </Col>
                                     <Col sm="12" className="ms-5 mb-3">
-                                        <Button className="bg-dark" onClick={onAddToCartClick}>Thêm vào giỏ hàng</Button>
+                                        <Button disabled={disabledAddCartButton} className="bg-dark" onClick={onAddToCartClick}>Thêm vào giỏ hàng</Button>
                                     </Col>
                                 </Row>
 
@@ -250,7 +271,7 @@ function ShowInfoProduct({ id, user, setAmountProductInCart, amountProductInCart
                                         <Button onClick={onTruClick} className="bg-secondary" style={{ width: 40, height: 40 }}>-</Button> <strong className="ms-3">{amount}</strong> <Button onClick={onCongClick} className="bg-secondary ms-3" style={{ width: 40, height: 40 }}>+</Button>
                                     </Col>
                                     <Col sm="12" className="mb-1 ">
-                                        <Button className="bg-danger w-100 mb-3" onClick={onAddToCartClick}>Thêm vào giỏ hàng</Button>
+                                        <Button disabled={disabledAddCartButton} className="bg-danger w-100 mb-3" onClick={onAddToCartClick}>Thêm vào giỏ hàng</Button>
                                     </Col>
                                     <Col sm="12" className="mb-1">
                                         <h2>{subProduct ? subProduct.name.toUpperCase() : null}</h2>
@@ -277,7 +298,11 @@ function ShowInfoProduct({ id, user, setAmountProductInCart, amountProductInCart
                 </Row>
             </Container>
         }
-            
+            <Snackbar style={{zIndex: 1500}} open={openAlert} autoHideDuration={3000} onClose={handleCloseAlert} anchorOrigin={{ vertical, horizontal }}>
+                <Alert onClose={handleCloseAlert} severity={statusModal} sx={{ width: '100%' }}>
+                    {noidungAlertValid}
+                </Alert>
+            </Snackbar>
 
         </>
     )

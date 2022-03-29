@@ -50,10 +50,10 @@ function HomepageContent({widthHandler}) {
         <>
             <Navbar fixed='bottom'>
                 <Container>
-                    <Button onClick={goToCategoriesProductPage} className='btn bg-success text-white' >Go to Products Page</Button>
+                    <Button onClick={goToCategoriesProductPage} className='btn bg-success text-white' >Đến trang sản phẩm</Button>
                 </Container>
             </Navbar>
-            <CarouselComponent widthHandler={widthHandler}/>
+            <CarouselComponent goToCategoriesProductPage={goToCategoriesProductPage} widthHandler={widthHandler}/>
             <LastestProducts widthHandler={widthHandler} products={products} />
             <div style={{ display: hideAllViewAfterClick }} className="text-center mt-5 mb-5">
                 <ViewAll onViewAllClick={onViewAllClick} />
