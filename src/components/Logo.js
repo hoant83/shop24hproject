@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 function Logo({widthHandler}) {
     const navigate = useNavigate();
     const onLogoClick = () => {
-        
         navigate("/")
+        window.scrollTo(0, 0);
     }
     return (
         <>

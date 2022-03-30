@@ -55,6 +55,7 @@ function ContentComponent({ widthHandler }) {
         setRunOnFilter(runOnFilter + 1)
     }
     useEffect(() => {
+        window.scrollTo(0, 0);
         // gọi api lấy thông tin tất cả products
         getData("https://shop24h-backend.herokuapp.com/products?" + "name=" + fillterName + "&priceMin=" + priceMin + "&priceMax=" + priceMax + "&valueSelected=" + valueSelectTypeProduct)
             .then((data) => {
@@ -62,6 +63,7 @@ function ContentComponent({ widthHandler }) {
                 //setProducts(data.products);
                 setNoPage(Math.ceil(data.products.length / limit));
                 setProductNew(data.products.slice((page - 1) * limit, page * limit));
+                
             })
             .catch((error) => {
                 console.log(error)

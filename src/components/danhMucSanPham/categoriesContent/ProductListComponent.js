@@ -52,7 +52,7 @@ function ProductsListComponent({ productNew, widthHandler }) {
                                                     src={product.imageUrl[0]}
                                                     top="true"
                                                     width="100%"
-                                                    height="150"
+                                                    height="100%"
                                                 />
                                                 <CardBody>
                                                     <CardTitle tag="h5">
